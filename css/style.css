@@ -1,0 +1,241 @@
+/* style.css */
+/* Import Bootstrap */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+
+/* Root Variables */
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #9E9E9E;
+    --light-color: #FFFFFF;
+    --text-color: #212121;
+    --heading-color: #212121;
+    --font-base: 'Roboto', sans-serif;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-sm: 14px;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --border-radius: 0.3rem;
+    --box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease-in-out;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-base);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 4.5rem;
+    padding-bottom: var(--space-lg);
+}
+
+/* Typography */
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.9rem; }
+h3 { font-size: 1.65rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+
+p {
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-base);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #1769aa;
+}
+
+/* Buttons */
+.btn {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1769aa;
+    border-color: #1769aa;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    padding: var(--space-sm) 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 3rem;
+}
+
+.navbar-title {
+    margin-left: var(--space-sm);
+    color: white;
+    font-size: var(--font-size-lg);
+}
+
+/* 🔥 Modern Hover Effect on Navbar */
+.navbar-nav .nav-link {
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    position: relative;
+    font-size: var(--font-size-lg);
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background: white;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+/* Carousel */
+.carousel-inner {
+    overflow: hidden;
+}
+
+.carousel-item {
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 30rem;
+    filter: brightness(0.95) contrast(1.05);
+}
+
+/* Welcome Message */
+.welcome-message {
+    background-color: #e0f2f7;
+    color: var(--text-color);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: justify;
+    font-size: var(--font-size-lg);
+}
+
+.welcome-message h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--space-md);
+}
+
+/* Cards */
+.card {
+    margin-bottom: var(--space-lg);
+    border: none;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--light-color);
+    text-align: center;
+    padding: var(--space-sm) 0;
+    margin-top: var(--space-lg);
+}
+
+
+/* Responsive Navbar */
+@media (max-width: 991.98px) {
+    .navbar-logo {
+        height: 30px;
+    }
+
+    .navbar-title {
+        font-size: var(--font-size-sm);
+    }
+
+    .navbar-nav .nav-link {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Responsive Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+#daftar-pegawai table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+@media (max-width: 767.98px) {
+    .carousel-item img {
+        height: 20rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.1rem; }
+    h6 { font-size: 0.95rem; }
+}
