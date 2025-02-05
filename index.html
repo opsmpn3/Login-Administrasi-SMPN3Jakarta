@@ -1,174 +1,479 @@
-<!doctype html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administrasi SMPN 3 Jakarta</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="img/logosnega.png" alt="Logo SMPN 3" class="navbar-logo me-2">
-                <div class="navbar-title">
-                    <span class="text-white fw-bold d-block">ADMINISTRASI</span>
-                    <span class="text-white small d-none d-lg-block">SMP NEGERI 3 JAKARTA</span>
-                </div>
-            </a>
-            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active mx-2" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="profil.html">Profil</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="kepegawaian.html">Kepegawaian</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="kesiswaan.html">Kesiswaan</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="inventaris.html">Inventaris</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="sarpras.html">Sarpras</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="persuratan.html">Persuratan</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="kontak.html">Kontak</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div id="date-time"></div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/slidehome1.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-            <div class="carousel-item">
-                <img src="img/slidehome2.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-            <div class="carousel-item active">
-                <img src="img/slidehome3.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-            <div class="carousel-item">
-                <img src="img/slidehome4.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-            <div class="carousel-item active">
-                <img src="img/slidehome5.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-            <div class="carousel-item">
-                <img src="img/slidehome6.jpg" class="d-block w-100" alt="Tampak depan gedung SMPN 3 Jakarta pada pagi hari dengan pepohonan hijau di sekitarnya.">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <div class="welcome-message">
-        <h2>Selamat Datang di Website Tata Usaha SMPN 3 Jakarta</h2>
-        <p>Selamat datang di website resmi Tata Usaha SMP Negeri 3 Jakarta. Website ini menyediakan informasi penting terkait administrasi sekolah, kepegawaian, kesiswaan, inventaris, sarana dan prasarana, persuratan, dan informasi kontak. Kami berharap website ini dapat memberikan kemudahan dan manfaat bagi seluruh warga sekolah dan masyarakat umum.</p>
-    </div>
-    
-    <main class="mt-5 pt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mt-4">
-                        <div class="card-header bg-success text-white">
-                            <h4>Informasi Penting</h4>
-                        </div>
-                        <div class="card-body">
-                            <p>Ini adalah bagian untuk menampilkan informasi penting atau informasi khusus, seperti pengumuman, berita terbaru, atau informasi lainnya yang relevan.</p>
-    
-                            <ul class="list-unstyled">
-                                <li><a href="#">Pengumuman Libur Semester Ganjil</a></li>
-                                <li><a href="#">Informasi Penerimaan Siswa Baru Tahun Ajaran 2024/2025</a></li>
-                                <li><a href="#">Berita: SMPN 3 Jakarta Raih Penghargaan Adiwiyata Nasional</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-users fa-3x mb-3 text-primary"></i>
-                                    <h3>Kepegawaian</h3>
-                                    <p>Informasi detail tentang data pegawai, rekrutmen, dan administrasi kepegawaian
-                                        lainnya.</p>
-                                    <a href="kepegawaian.html" class="btn btn-primary">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-graduation-cap fa-3x mb-3 text-success"></i>
-                                    <h3>Kesiswaan</h3>
-                                    <p>Informasi lengkap mengenai data siswa, pendaftaran, beasiswa, dan informasi
-                                        akademik.</p>
-                                    <a href="kesiswaan.html" class="btn btn-success">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-th-list fa-3x mb-3 text-warning"></i>
-                                    <h3>Inventaris</h3>
-                                    <p>Data inventaris barang dan ruangan, serta informasi pengelolaan inventaris sekolah.
-                                    </p>
-                                    <a href="inventaris.html" class="btn btn-warning">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-building fa-3x mb-3 text-info"></i>
-                                    <h3>Sarpras</h3>
-                                    <p>Informasi tentang sarana dan prasarana sekolah, termasuk fasilitas dan kondisi
-                                        terkini.</p>
-                                    <a href="sarpras.html" class="btn btn-info">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-envelope fa-3x mb-3 text-danger"></i>
-                                    <h3>Persuratan</h3>
-                                    <p>Informasi terkait surat-surat penting sekolah dan arsip surat yang tersedia.</p>
-                                    <a href="persuratan.html" class="btn btn-danger">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-phone fa-3x mb-3 text-secondary"></i>
-                                    <h3>Kontak</h3>
-                                    <p>Informasi kontak dan alamat sekolah untuk memudahkan Anda menghubungi kami.</p>
-                                    <a href="kontak.html" class="btn btn-secondary">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+document.addEventListener('DOMContentLoaded', function() {
+    const dataPegawai = [
+        // Data Pendidik
+        {
+            "nama": "Irwanto Sumantri, S.Pd",
+            "niki": "196510101988031014",
+            "jabatan": "Kepala Sekolah",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Drs. Sulaeman",
+            "niki": "196706191995121002",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dwi Desi Rima Irani, S.Pd. M.Si",
+            "niki": "197112241997032002",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Drs. Herru Tri Handaka",
+            "niki": "196505171998021002",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Atin Supryatin",
+            "niki": "196711041997032001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Yenidar",
+            "niki": "197004271998022002",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Retnowati",
+            "niki": "196903102008012027",
+            "jabatan": "Wakil Kepala Sekolah",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Yani Samsuwati, S.Pd",
+            "niki": "196608292008012008",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Drs. Tunggul Hutagaol",
+            "niki": "196808012016111001",
+            "jabatan": "Staff Wakil",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Suhanah, S.Pd",
+            "niki": "196606022016102001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Nina Komala Sari, S.Pd",
+            "niki": "197101262017082001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Maryatun",
+            "niki": "196601252007012010",
+            "jabatan": "Staff Wakil",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Magda Ctellah Matindas",
+            "niki": "196505172016062001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Sukarno, S.Pd",
+            "niki": "196711192016111001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dra. Kusmiyati",
+            "niki": "196901052017062001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Muthoharoh, S.Pd.I",
+            "niki": "198902052015042004",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Mariam Giselle Andrea Luciano, S.Pd",
+            "niki": "199212162019032008",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Septia Saraswati, S.Pd",
+            "niki": "199009012020122018",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Ina Musdalifa, S.Pd",
+            "niki": "197009112022212003",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Dewi Komalasari, S.E",
+            "niki": "197806092022212006",
+            "jabatan": "Staff Wakil",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Purnakarta, S.Pd",
+            "niki": "198112092022211006",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Rahmad Hafido Prayoga, S.Pd",
+            "niki": "199304292022211007",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Khonsa Tsabita Baityhaq, S.Pd",
+            "niki": "199603122022212015",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Hanny Sugiharyani, S.Pd",
+            "niki": "199702182022212012",
+            "jabatan": "Staff Wakil",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Raka Prasetyo, M.Pd",
+            "niki": "199410092023211018",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Gita Marlinda, M.Pd",
+            "niki": "199103312023212031",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Maizal, S.Pd",
+            "niki": "196605132023211001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Achmad Darojih, S.Pd.I",
+            "niki": "197308152023211001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Riris, S.Pd",
+            "niki": "198305112023212024",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Arni Purwati, S.Pd",
+            "niki": "199210242023212044",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Citra Febrianti, S.Pd",
+            "niki": "199102122023212043",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Vivi Rizky Awalia,S.Sn",
+            "niki": "199206032023212037",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Siti Nurhaeni, S.Pd.",
+            "niki": "199205282023212029",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Henrikus Wawan Kurniawan, S.Pd",
+            "niki": "199507132023211013",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Nur Aini, S.Pd",
+            "niki": "197901132024212001",
+            "jabatan": "Guru",
+            "foto": "img/user.jpg", // Ganti dengan path foto yang benar
+            "kategori": "Pendidik"
+        },
+        {
+            "nama": "Aries Andesko Syamsirman, S.Pd",
+        "niki": "1005790",
+        "jabatan": "Guru",
+        "foto": "img/user.jpg",
+        "kategori": "Pendidik"
+    }, // <-- Koma penting di sini
+
+    // Data Tendik  <-- Komentar di luar objek
+    // Data Tendik
+    {
+        "nama": "Dian Setiawati, S.E",
+        "niki": "1016569",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/dian.jpg",
+        "kategori": "Tendik"
+    },
+    {
+        "nama": "Sulasto, S.Pd",
+        "niki": "1016578",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/sulasto.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Riyan Heriyanto, S.Kom",
+        "niki": "1020259",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/riyan.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Jojor Sinaga, S.Kom",
+        "niki": "1016550",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/jojor.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Saprudin",
+        "niki": "1016568",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/saprudin.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Siswanto",
+        "niki": "1016571",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/siswanto.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Lulu Firdaus",
+        "niki": "1026286",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/lulu.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Sunaryo",
+        "niki": "1016570",
+        "jabatan": "Tenaga Administrasi",
+        "foto": "img/user.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Fauziah Utami, S.Kom",
+        "niki": "1030678",
+        "jabatan": "Tenaga Kebersihan",
+        "foto": "img/fauziah.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Ahmad Fauzi",
+        "niki": "1016573",
+        "jabatan": "Tenaga Kebersihan",
+        "foto": "img/ahmad.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    },
+    {
+        "nama": "Iyan Sopian",
+        "niki": "1016575",
+        "jabatan": "Penjaga Sekolah",
+        "foto": "img/user.jpg",
+        "kategori": "Tendik" // Kategori ditambahkan
+    }
+];
+
+const pendidik = dataPegawai.filter(pegawai => pegawai.kategori === "Pendidik");
+const tendik = dataPegawai.filter(pegawai => pegawai.kategori === "Tendik");
+
+function buatTabel(data, judul) {
+    let tabelHTML = `<h2>${judul}</h2>`;
+    tabelHTML += '<table class="table table-bordered table-striped table-responsive">';
+    tabelHTML += '<thead><tr><th>Foto</th><th>Nama</th><th>NIKI</th><th>Jabatan</th></tr></thead><tbody>';
+
+    data.forEach(pegawai => {
+        const imgTag = `<img src="${pegawai.foto}" alt="${pegawai.nama}" class="img-fluid rounded-circle">`;
+        tabelHTML += `<tr>
+                    <td class="text-center">${imgTag}</td>
+                    <td>${pegawai.nama}</td>
+                    <td>${pegawai.niki}</td>
+                    <td>${pegawai.jabatan}</td>
+                  </tr>`;
+    });
+
+    tabelHTML += '</tbody></table>';
+    return tabelHTML;
+}
+
+document.getElementById('daftar-pegawai').innerHTML = buatTabel(pendidik, "Data Pendidik") + buatTabel(tendik, "Data Tendik");
+});
 
 
-    <footer class="mt-5 py-3 bg-light text-center">
-        <p>&copy; 2025 Riyan Heriyanto | SMPN 3 Jakarta</p>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
+const navLinks = document.querySelectorAll('.navbar-light .navbar-nav .nav-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        link.classList.toggle('active');
+
+        navLinks.forEach(otherLink => {
+            if (otherLink !== link) {
+                otherLink.classList.remove('active');
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    document.addEventListener('click', function(event) {
+        if (navbarCollapse.classList.contains('show') && !event.target.closest('.navbar')) {
+            navbarToggler.click();
+        }
+    });
+});
+
+
+
+
+const searchForm = document.querySelector('.search-form');
+const searchInput = document.querySelector('.search-form input');
+
+searchForm.addEventListener('click', (e) => {
+    searchForm.classList.toggle('active');
+    searchInput.focus(); // Fokus ke input saat dibuka
+    e.preventDefault();
+});
+
+
+
+
+function tampilkanTanggal() {
+    const tanggalElement = document.getElementById("tanggal");
+    const sekarang = new Date();
+
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    const tanggal = sekarang.toLocaleDateString('id-ID', options); // Format Indonesia
+
+    tanggalElement.textContent = tanggal;
+}
+
+// Panggil fungsi saat halaman dimuat
+window.onload = tampilkanTanggal;
+
+
+
+// ... (dataSiswa tetap sama)
+
+const optionsSiswa = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        y: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'Jumlah Siswa',
+                color: '#333'
+            },
+            ticks: {
+                color: '#333'
+            }
+        },
+        x: {
+            title: {
+                display: true,
+                text: 'Tingkatan Kelas',
+                color: '#333'
+            },
+            ticks: {
+                color: '#333'
+            }
+        }
+    },
+    plugins: {
+        title: {
+            display: true,
+            text: 'Grafik Jumlah Siswa Per Tingkatan Kelas',
+            color: '#333',
+            font: {
+                size: 16
+            }
+        },
+        legend: {
+            labels: {
+                color: '#333'
+            }
+        },
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    return 'Jumlah Siswa: ' + context.formattedValue;
+                }
+            }
+        }
+    }
+};
+
+const ctxSiswa = document.getElementById('chart-siswa').getContext('2d');
+new Chart(ctxSiswa, {
+    type: 'bar',
+    data: dataSiswa,
+    options: optionsSiswa
+});
