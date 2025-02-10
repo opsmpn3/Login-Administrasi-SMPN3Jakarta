@@ -1,54 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administrasi SMPN 3 Jakarta</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - Informasi Kesiswaan">
+    <title>Kontak - Administrasi SMP Negeri 3 Jakarta</title>
+    <link rel="icon" href="assets/logos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/kontak.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <!-- Navbar (PC) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed d-none d-lg-block">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="img/logosnega.png" alt="Logo SMPN 3" class="navbar-logo me-2">
-                <div class="navbar-title">
-                    <span class="text-white fw-bold d-block">ADMINISTRASI</span>
-                    <span class="text-white small d-none d-lg-block">SMP NEGERI 3 JAKARTA</span>
+                <img src="assets/logos/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
+                <div class="navbar-text">
+                    <span class="navbar-title">Administrasi</span>
+                    <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
+                </div>
+            </a>            
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="profil.html">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="kepegawaian.html">Kepegawaian</a></li>
+                <li class="nav-item"><a class="nav-link" href="kesiswaan.html">Kesiswaan</a></li>
+                <li class="nav-item"><a class="nav-link" href="inventaris.html">Inventaris</a></li>
+                <li class="nav-item"><a class="nav-link" href="sarpras.html">Sarpras</a></li>
+                <li class="nav-item"><a class="nav-link" href="persuratan.html">Persuratan</a></li>
+                <li class="nav-item"><a class="nav-link active" href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar bg-body-tertiary fixed-top navbar-fixed d-lg-none">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logos/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
+                <div class="navbar-text">
+                    <span class="navbar-title">Administrasi</span>
+                    <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link mx-2" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="profil.html">Profil</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="kepegawaian.html">Kepegawaian</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="kesiswaan.html">Kesiswaan</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="inventaris.html">Inventaris</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="sarpras.html">Sarpras</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="persuratan.html">Persuratan</a></li>
-                    <li class="nav-item"><a class="nav-link active mx-2" href="kontak.html">Kontak</a></li>
-                </ul>
+            <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profil.html">Profil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kepegawaian.html">Kepegawaian</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kesiswaan.html">Kesiswaan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="inventaris.html">Inventaris</a></li>
+                        <li class="nav-item"><a class="nav-link" href="sarpras.html">Sarpras</a></li>
+                        <li class="nav-item"><a class="nav-link" href="persuratan.html">Persuratan</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
-    <main class="mt-5 pt-5">
-        <div class="container">
-            <h1>Kontak</h1>
-            <p>Informasi kontak dan alamat SMPN 3 Jakarta.</p>
-    
-            <p><strong>Alamat:</strong> Jl. Manggarai Utara IV/6</p>
-            <p><strong>Telepon:</strong> (021) xxx-xxxx</p>
-            <p><strong>Email:</strong> info@smpn3jakarta.sch.id</p>
-    
-            <iframe src="https://www.google.com/maps/embed?..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> </main>
-    <footer class="mt-5 py-3 bg-light text-center">
-      <p>&copy; 2024 Tata Usaha SMPN 3 Jakarta</p>
-    </footer>
+<body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+<!-- Hero Section -->
+<header class="hero d-flex align-items-center text-center">
+    <div class="container">
+        <h2>Kontak</h2>
+        <p>Hubungi kami untuk informasi lebih lanjut</p>
+    </div>
+</header>
+
+<!-- Informasi Kontak -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h5><i class="bi bi-geo-alt"></i> Alamat</h5>
+            <p>Jl. Pendidikan No. 123, Jakarta</p>
+            <h5><i class="bi bi-telephone"></i> Telepon</h5>
+            <p>(021) 1234567</p>
+            <h5><i class="bi bi-envelope"></i> Email</h5>
+            <p>info@smpn3jakarta.sch.id</p>
+        </div>
+        <div class="col-md-6">
+            <h5><i class="bi bi-map"></i> Lokasi Sekolah</h5>
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="250" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-dark py-4 mt-5">
+    <div class="container text-center">
+        <p>&copy; 2025 Administrasi SMP Negeri 3 Jakarta. All rights reserved.</p>
+        <p>Created by Riyan Heriyanto</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/kontak.js"></script>
 </body>
 </html>
+
+
