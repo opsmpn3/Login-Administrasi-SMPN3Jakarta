@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
 /* ===================================================================
    RESET AND BASIC STYLES
    =================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #333D4B; /* Dark Gray */
-    margin: 0;
-    padding: 0;
     background: #F4F7FC; /* Soft Grayish Blue */
 }
 
@@ -18,6 +20,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: #1E4B9B; /* Deep Blue */
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
 }
 
 /* ===================================================================
@@ -26,53 +33,12 @@ h1, h2, h3, h4, h5, h6 {
 .navbar, .offcanvas {
     background-color: #FFFFFF; /* Pure White */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
 }
 
 .navbar-brand {
     font-weight: bold;
     color: #4A90E2 !important; /* Soft Royal Blue */
-}
-/* Ensure the navbar is fixed at the top */
-.navbar-fixed {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-/* Add padding to the body to prevent content from being hidden under the fixed navbar */
-body {
-    padding-top: 0%; /* Adjust this value based on the height of your navbar */
-}
-
-/* NAVBAR MENU HOVER EFFECT */
-.navbar-nav .nav-link {
-    color: #67758D !important; /* Cool Gray */
-    font-weight: 500;
-    padding: 10px 15px;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-}
-
-.navbar-nav .nav-link::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #4A90E2;
-    transition: width 0.3s ease-in-out;
-    margin: auto;
-}
-
-.navbar-nav .nav-link:hover::after {
-    width: 100%;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #1E4B9B !important; /* Deep Blue */
-}
-
-.navbar-brand {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -99,6 +65,52 @@ body {
 .navbar-subtitle {
     font-size: 14px;
     color: #67758D;
+}
+
+/* Ensure the navbar is fixed at the top */
+.navbar-fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Add padding to the body to prevent content from being hidden under the fixed navbar */
+body {
+    padding-top: 60px; /* Adjust this value based on the height of your navbar */
+}
+
+/* NAVBAR MENU HOVER EFFECT */
+.navbar-nav {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-nav .nav-link {
+    color: #67758D !important; /* Cool Gray */
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #4A90E2;
+    transition: width 0.3s ease-in-out;
+    margin: auto;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #1E4B9B !important; /* Deep Blue */
 }
 
 /* --- OFFCANVAS STYLING (Agar tetap rapi di mode ponsel) --- */
@@ -129,6 +141,15 @@ body {
     .navbar-subtitle {
         font-size: 12px;
     }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+    }
 }
 
 /* ===================================================================
@@ -137,7 +158,7 @@ body {
 .hero {
     background: linear-gradient(120deg, #E8EFFB, #FFFFFF);
     color: #1E4B9B;
-    padding: 100px 0;
+    padding: 100px 20px;
     text-align: center;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     padding-bottom: 10px;
@@ -154,7 +175,7 @@ body {
 }
 
 .index-page .hero {
-    padding-top: 10px; /* Atur padding khusus hanya untuk index.html */
+    padding-top: 60px; /* Atur padding khusus hanya untuk index.html */
 }
 
 /* ===================================================================
@@ -163,18 +184,21 @@ body {
 .carousel-item img {
     object-fit: cover;
     height: 500px;
+    width: 100%;
 }
 
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 /* ===================================================================
    CARD DESIGN
    =================================================================== */
-   .card {
+.card {
     border: none;
     background: #FFFFFF; /* White */
     color: #333D4B;
@@ -182,6 +206,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px; /* Menambahkan radius sudut */
     padding: 20px; /* Menambahkan padding */
+    margin-bottom: 20px;
 }
 
 .card:hover {
@@ -213,6 +238,7 @@ body {
     border: none; /* Menghilangkan border */
     padding: 10px 20px; /* Menambahkan padding */
     cursor: pointer; /* Mengubah kursor saat hover */
+    text-decoration: none;
 }
 
 .btn:hover {
@@ -279,16 +305,16 @@ body {
     background-color: #138496;
 }
 
-
 /* ===================================================================
    FOOTER
    =================================================================== */
 footer {
     background-color: #FFFFFF; /* Pure White */
     color: #67758D;
-    padding: 25px 0;
+    padding: 25px 20px;
     text-align: center;
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 /* FOOTER TEXT HOVER */
@@ -327,12 +353,58 @@ footer p:hover {
     .card-text {
         font-size: 1rem;
     }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .index-page .hero {
+        padding-top: 60px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+    }
 }
 
+@media (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
 
+    .navbar-nav .nav-link {
+        text-align: center;
+    }
 
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-/* Lightbox Effect */
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+}
+
+/* ===================================================================
+   LIGHTBOX EFFECT
+   =================================================================== */
 .gallery-item {
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -342,7 +414,9 @@ footer p:hover {
     transform: scale(1.05);
 }
 
-/* Efek Animasi Saat Scroll */
+/* ===================================================================
+   FADE-IN ANIMATION
+   =================================================================== */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -354,9 +428,10 @@ footer p:hover {
     transform: translateY(0);
 }
 
-/* Video Responsif */
+/* ===================================================================
+   VIDEO RESPONSIF
+   =================================================================== */
 .video-embed {
     max-width: 100%;
     height: auto;
 }
-
