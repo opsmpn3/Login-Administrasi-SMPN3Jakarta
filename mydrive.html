@@ -14,163 +14,188 @@
     <link rel="stylesheet" href="css/style.min.css">  
 
     <style>
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background: #1E4B9B;
-            padding: 20px;
-            color: white;
-            transition: transform 0.3s ease-in-out;
-            z-index: 1100;
-            display: flex;
-            flex-direction: column;
-        }
+ :root {
+    --primary-color: #1E4B9B;
+    --text-light: #FFFFFF;
+    --text-dark: #333D4B;
+    --navbar-bg: #FFFFFF;
+    --hover-bg: rgba(255, 255, 255, 0.2);
+}
 
-        .sidebar .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            color: black;
-        }
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--primary-color);
+    padding: 20px;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1100;
+}
 
-        .sidebar .logo-container img {
-            width: 50px;
-            height: auto;
-        }
+.sidebar .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-        .sidebar a {
-            color: #FFFFFF;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 5px;
-            transition: 0.3s;
-            font-size: 16px;
-        }
+.sidebar .logo-container img {
+    width: 50px;
+    height: auto;
+}
 
-        .sidebar a i {
-            margin-right: 10px;
-            font-size: 18px;
-        }
+.sidebar a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 16px;
+}
 
-        .sidebar a:hover, .sidebar a.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
+.sidebar a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
 
-        /* Navbar */
-        .navbar {
-            width: calc(100% - 250px);
-            margin-left: 250px;
-            transition: 0.3s;
-            background-color: #FFFFFF;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-        }
+.sidebar a:hover, .sidebar a.active {
+    background: var(--hover-bg);
+}
 
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* Navbar Tetap di Atas */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    background-color: var(--navbar-bg);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;
+}
 
-        .navbar-logo {
-            width: 60px;
-            height: auto;
-        }
+/* Konten harus punya padding agar tidak tertutup navbar */
+.content {
+    margin-left: 250px;
+    padding: 80px 20px 20px;
+    transition: margin-left 0.3s ease-in-out;
+    color: var(--text-dark);
+}
 
-        .navbar-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            line-height: 1.2;
-        }
+/* Navbar Brand */
+.navbar-brand {
+    font-weight: bold;
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .navbar-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 18px;
-        }
+.navbar-logo {
+    width: 60px;
+    height: auto;
+}
 
-        .navbar-subtitle {
-            font-size: 14px;
-            color: var(--secondary-color);
-        }
-        /* Breadcrumb */
-        .breadcrumb {
-            background-color: transparent;
-            margin-bottom: 20px;
-            padding: 0;
-        }
+.navbar-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
 
-        /* Toggler Sidebar */
-        .toggle-btn {
-            font-size: 24px;
-            background: none;
-            border: none;
-            color: #1E4B9B;
-            transition: 0.3s;
-        }
+.navbar-title {
+    font-weight: bold;
+    color: #fffbfb;
+    font-size: 18px;
+}
 
-        /* Dropdown */
-        .dropdown-menu {
-            min-width: 200px;
-        }
+.navbar-subtitle {
+    font-size: 14px;
+    color: #bdbdbd;
+}
 
-        /* Konten */
-        .content {
-            margin-left: 250px;
-            transition: margin-left 0.3s ease-in-out;
-            padding: 20px;
-            color: #333D4B;
-        }
+/* Breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    margin-bottom: 20px;
+    padding: 0;
+}
 
-        /* Offcanvas Menu (Muncul dari Kiri) */
-        .offcanvas-start {
-            width: 250px;
-            background: #1E4B9B;
-            color: white;
-        }
+/* Toggler Sidebar */
+.toggle-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    transition: 0.3s;
+}
 
-        .offcanvas-body a {
-            font-size: 18px;
-            padding: 10px;
-            display: block;
-            text-decoration: none;
-            color: #FFFFFF;
-        }
+/* Dropdown Perbaikan */
+.dropdown-menu {
+    position: absolute !important;
+    transform: translateY(0) !important;
+    left: auto !important;
+    right: 0 !important;
+    min-width: 200px;
+    top: 100% !important;
+}
 
-        .offcanvas-body a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+.btn-light.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
 
-        /* Responsif */
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
+.btn-light .fa-user-circle {
+    font-size: 1.2rem;
+}
 
-            .navbar {
-                width: 100%;
-                margin-left: 0;
-            }
+/* Offcanvas Menu */
+.offcanvas-start {
+    width: 250px;
+    background: var(--primary-color);
+    color: var(--text-light);
+}
 
-            .content {
-                margin-left: 0;
-            }
+.offcanvas-body a {
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: var(--text-light);
+}
 
-            .offcanvas-body a {
-                font-size: 16px;
-            }
-        }
+.offcanvas-body a:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Responsif */
+@media (max-width: 992px) {
+    .sidebar {
+        display: none;
+    }
+
+    .navbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 80px 15px 20px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -212,23 +237,28 @@
 
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container-fluid">
-            <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
-                <i class="fas fa-bars"></i>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+        <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Dropdown User -->
+        <div class="dropdown ms-auto">
+            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user-circle me-2"></i>
+                <span id="username">Pengguna</span>
             </button>
-            <div class="dropdown ms-auto">
-                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </i> <span id="username"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Offcanvas (Mobile) Muncul dari Kiri -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
@@ -261,19 +291,78 @@
         </ul>
     </div>
 </div>
-<div class="content" id="content">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-            <li class="breadcrumb-item active" id="breadcrumb-current">My Drive</li>
-        </ol>
-    </nav>
-    <div id="main-content">
-        <h3>My Drive</h3>
-        <p>Mengalihkan Anda ke Google Drive...</p>
-    </div>
-</div>
 
+    <div class="content" id="content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" id="breadcrumb-current">My Drive</li>
+            </ol>
+        </nav>
+    
+        <!-- Main Content dengan Grid 2 Kolom -->
+        <div id="main-content" class="container">
+            <div class="row">
+                <!-- Card Informasi My Drive -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-lg p-3">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-info-circle"></i> Informasi My Drive</h3>
+                            <hr>
+                            <p>
+                                <strong>My Drive</strong> adalah sistem penyimpanan berbasis Google Drive yang digunakan untuk menyimpan, 
+                                mengelola, dan berbagi dokumen penting secara aman dan terstruktur. Pengguna dapat mengunggah, mengelola, dan berbagi dokumen 
+                                dengan izin akses yang telah ditentukan.
+                            </p>
+    
+                            <h5>🔄 Bagaimana Cara Menggunakannya?</h5>
+                            <ul>
+                                <li>📂 Setiap pengguna memiliki folder tersendiri di Google Drive.</li>
+                                <li>📥 Dokumen dapat diunggah, diperbarui, dan dibagikan sesuai kebutuhan.</li>
+                                <li>🔑 Akses diberikan berdasarkan akun login.</li>
+                                <li>🛡 Keamanan terjaga melalui sistem hak akses.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card Akses My Drive -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-lg p-3">
+                        <div class="card-body text-center">
+                            <h3 class="card-title"><i class="fas fa-folder-open"></i> Akses My Drive</h3>
+                            <hr>
+                            <p>Klik tombol di bawah untuk masuk ke folder pribadi Anda di Google Drive.</p>
+                            <button id="openDriveBtn" class="btn btn-primary btn-lg" disabled>
+                                <i class="fas fa-folder-open"></i> Buka Drive Saya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card Syarat Dokumen Administrasi -->
+                <div class="col-lg-12">
+                    <div class="card shadow-lg p-3">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-file-alt"></i> Syarat Dokumen Administrasi</h3>
+                            <hr>
+                            <p>Berikut adalah daftar dokumen yang harus disiapkan untuk keperluan administrasi:</p>
+                            <ul>
+                                <li>🆔 **Kartu Tanda Penduduk (KTP)** – Scan dalam format PDF/JPG.</li>
+                                <li>📜 **Akta Nikah** – Bagi yang sudah menikah, dalam bentuk scan resmi.</li>
+                                <li>🏠 **Kartu Keluarga (KK)** – Dokumen asli yang sudah di-scan.</li>
+                                <li>📄 **Ijazah & Sertifikat Pendidikan** – Semua tingkat pendidikan terakhir.</li>
+                                <li>💳 **NPWP (Nomor Pokok Wajib Pajak)** – Jika sudah memiliki.</li>
+                                <li>📑 **SK Pegawai & SK Jabatan** – Jika berlaku.</li>
+                                <li>📝 **Surat Keterangan Sehat** – Dari dokter resmi.</li>
+                            </ul>
+                            <p><strong>Pastikan semua dokumen dalam format PDF atau JPG sebelum diunggah ke My Drive.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <footer class="text-dark py-4 mt-5">
     <div class="container">
         <div class="d-flex justify-content-center flex-wrap">
@@ -286,9 +375,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+    
+    // Ambil elemen yang diperlukan
     const usernameDisplay = document.getElementById('username');
+    const openDriveBtn = document.getElementById('openDriveBtn');
+    const profileSetting = document.getElementById('profileSetting');
+    const logoutButton = document.getElementById('logoutButton');
+
+    // Redirect ke login jika user tidak ditemukan
+    if (!loggedInUser) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // Tampilkan username di navbar
+    usernameDisplay.textContent = loggedInUser.name.trim();
 
     // Daftar pengguna dan link Google Drive (sesuai dengan data yang Anda berikan)
     const users = [
@@ -342,24 +445,48 @@ document.addEventListener('DOMContentLoaded', function() {
             { name: "Dwi Desi Rima Irani", username: "1TcW9vGOMQwihz-04q7JU6GHoSx3DVizp", link: "https://drive.google.com/drive/folders/1TcW9vGOMQwihz-04q7JU6GHoSx3DVizp?usp=sharing" }
         ];
 
-        if (loggedInUser) {
-            usernameDisplay.textContent = loggedInUser.name;
-            const user = users.find(u => u.username === loggedInUser.username);
-            if (user) {
-                window.location.href = user.link; // Redirect ke link Google Drive
-            } else {
-                alert('Link Google Drive tidak ditemukan untuk pengguna ini.');
-            }
-        } else {
-            window.location.href = 'login.html'; // Redirect jika tidak ada pengguna yang login
-        }
+        // Cari link Google Drive berdasarkan username
+    const user = users.find(u => u.username === loggedInUser.username);
 
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            sessionStorage.removeItem('user');
-            window.location.href = 'login.html';
-        });
+if (user && user.link) {
+    openDriveBtn.disabled = false; // Aktifkan tombol jika user ditemukan
+    openDriveBtn.addEventListener('click', function () {
+        window.open(user.link, '_blank'); // Buka di tab baru
     });
+} else {
+    openDriveBtn.disabled = true; // Nonaktifkan tombol jika tidak ada link
+    openDriveBtn.textContent = "Drive Tidak Tersedia";
+}
+
+// Event untuk Pengaturan Profil
+profileSetting.addEventListener('click', function (event) {
+    event.preventDefault();
+    alert("Pengaturan profil akan segera tersedia!");
+});
+
+// Event untuk Logout
+logoutButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (confirm('Apakah Anda yakin ingin logout?')) {
+        sessionStorage.removeItem('user'); // Hapus sesi
+        window.location.href = 'index.html'; // Redirect ke halaman login
+    }
+});
+
+// Highlight menu yang aktif di sidebar dan offcanvas
+const currentPage = window.location.pathname.split('/').pop();
+document.querySelectorAll('.nav-link, #offcanvasMenu .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
+});
+});
+
     </script>
+
+    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
