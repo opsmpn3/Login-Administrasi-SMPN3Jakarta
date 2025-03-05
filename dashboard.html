@@ -121,10 +121,28 @@
             transition: 0.3s;
         }
 
-        /* Dropdown */
-        .dropdown-menu {
-            min-width: 200px;
-        }
+        /* Perbaikan posisi dropdown */
+.dropdown-menu {
+    position: absolute !important;
+    transform: translateY(0) !important;
+    left: auto !important;
+    right: 0 !important;
+    min-width: 200px;
+    top: 100% !important;
+}
+
+/* Pastikan tombol dropdown sejajar dengan teks */
+.btn-light.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+/* Ikon user agar lebih rapi */
+.btn-light .fa-user-circle {
+    font-size: 1.2rem;
+}
+
 
         /* Konten */
         .content {
@@ -154,24 +172,27 @@
         }
 
         /* Responsif */
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
+@media (max-width: 992px) {
+    .sidebar {
+        display: none;
+    }
 
-            .navbar {
-                width: 100%;
-                margin-left: 0;
-            }
+    .navbar {
+        width: 100%;
+        margin-left: 0;
+    }
 
-            .content {
-                margin-left: 0;
-            }
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+}
 
-            .offcanvas-body a {
-                font-size: 16px;
-            }
-        }
+@media (max-width: 768px) {
+    .program-card {
+        margin-bottom: 20px;
+    }
+}
 
         .dashboard-stats {
             display: grid;
@@ -251,23 +272,27 @@
 
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container-fluid">
-            <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
-                <i class="fas fa-bars"></i>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+        <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Username & Dropdown -->
+        <div class="dropdown ms-auto">
+            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user-circle me-2"></i> 
+                <span id="username">Pengguna</span>
             </button>
-            <div class="dropdown ms-auto">
-                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </i> <span id="username"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Offcanvas (Mobile) Muncul dari Kiri -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
@@ -416,70 +441,75 @@
     });
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
-    const usernameDisplay = document.getElementById('username');
+    document.addEventListener('DOMContentLoaded', function () {
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
-    if (loggedInUser) {
-        usernameDisplay.textContent = loggedInUser.name;
-    } else {
-        window.location.href = 'index.html.html'; // Redirect jika tidak ada pengguna yang login
+    // Jika user belum login, redirect ke halaman login
+    if (!user) {
+        window.location.href = 'index.html';
+        return;
     }
 
-    document.getElementById('logoutButton').addEventListener('click', function() {
-        sessionStorage.removeItem('user');
-        window.location.href = 'index.html';
+    // Tampilkan username di navbar
+    document.getElementById('username').textContent = user.name;
+
+    // Fungsi logout yang benar
+    document.getElementById('logoutButton').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (confirm('Apakah Anda yakin ingin logout?')) {
+            sessionStorage.removeItem('user');  // Hapus user dari sessionStorage
+            window.location.href = 'index.html';  // Redirect ke halaman login
+        }
     });
 
-    // Data grafik (contoh)
-    const tenagaData = {
-        labels: ["Guru", "Tata Usaha", "Tenaga Keamanan", "Lainnya"],
-        datasets: [{
-            label: "Jumlah Tenaga Pendidik & Kependidikan",
-            data: [35, 10, 5, 3], // Ganti dengan data yang sesuai
-            backgroundColor: ["#4A90E2", "#50C878", "#FF5733", "#FFD700"],
-            borderColor: "#333",
-            borderWidth: 1
-        }]
-    };
+    // Mengatur menu aktif berdasarkan halaman saat ini
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.menu-item, #offcanvasMenu .nav-link').forEach(item => {
+        if (item.getAttribute('href') === currentPage) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
 
-    // Membuat grafik menggunakan Chart.js
+    // Membuat grafik statistik menggunakan Chart.js
     new Chart(document.getElementById("chartTenaga").getContext("2d"), {
-        type: "bar", // Jenis grafik (bar, line, pie, dll)
-        data: tenagaData,
+        type: "bar",
+        data: {
+            labels: ["Guru", "Tata Usaha", "Tenaga Keamanan", "Lainnya"],
+            datasets: [{
+                label: "Jumlah Tenaga Pendidik & Kependidikan",
+                data: [35, 10, 5, 3], 
+                backgroundColor: ["#4A90E2", "#50C878", "#FF5733", "#FFD700"],
+                borderColor: "#333",
+                borderWidth: 1
+            }]
+        },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                y: { beginAtZero: true }
             }
         }
     });
 
-    // Data tabel (contoh)
+    // Mengisi tabel dengan data statistik
+    const tableBody = document.getElementById("tableBody");
     const tableData = [
         { kategori: "Guru", total: 35 },
         { kategori: "Tata Usaha", total: 10 },
         { kategori: "Tenaga Keamanan", total: 5 },
         { kategori: "Lainnya", total: 3 }
     ];
-
-    // Mengisi data tabel
-    const tableBody = document.getElementById("tableBody");
+    
     tableData.forEach(item => {
         const row = document.createElement("tr");
-        const kategoriCell = document.createElement("td");
-        kategoriCell.colSpan = 2;
-        kategoriCell.textContent = item.kategori;
-        const totalCell = document.createElement("td");
-        totalCell.textContent = item.total;
-        row.appendChild(kategoriCell);
-        row.appendChild(totalCell);
+        row.innerHTML = `<td colspan="2">${item.kategori}</td><td>${item.total}</td>`;
         tableBody.appendChild(row);
     });
 });
+
    
     </script>
 
