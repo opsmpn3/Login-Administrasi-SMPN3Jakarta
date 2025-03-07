@@ -1,517 +1,388 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - Dashboard">
-    <title>Dashboard - SMP Negeri 3 Jakarta</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    
-    <!-- Bootstrap & FontAwesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-
-    <style>
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background: #1E4B9B;
-            padding: 20px;
-            color: white;
-            transition: transform 0.3s ease-in-out;
-            z-index: 1100;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            color: black;
-        }
-
-        .sidebar .logo-container img {
-            width: 50px;
-            height: auto;
-        }
-
-        .sidebar a {
-            color: #FFFFFF;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 5px;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-
-        .sidebar a i {
-            margin-right: 10px;
-            font-size: 18px;
-        }
-
-        .sidebar a:hover, .sidebar a.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Navbar */
-        .navbar {
-            width: calc(100% - 250px);
-            margin-left: 250px;
-            transition: 0.3s;
-            background-color: #FFFFFF;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .navbar-logo {
-            width: 60px;
-            height: auto;
-        }
-
-        .navbar-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .navbar-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 18px;
-        }
-
-        .navbar-subtitle {
-            font-size: 14px;
-            color: var(--secondary-color);
-        }
-        /* Breadcrumb */
-        .breadcrumb {
-            background-color: transparent;
-            margin-bottom: 20px;
-            padding: 0;
-        }
-
-        /* Toggler Sidebar */
-        .toggle-btn {
-            font-size: 24px;
-            background: none;
-            border: none;
-            color: #1E4B9B;
-            transition: 0.3s;
-        }
-
-        /* Perbaikan posisi dropdown */
-.dropdown-menu {
-    position: absolute !important;
-    transform: translateY(0) !important;
-    left: auto !important;
-    right: 0 !important;
-    min-width: 200px;
-    top: 100% !important;
-}
-
-/* Pastikan tombol dropdown sejajar dengan teks */
-.btn-light.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-}
-
-/* Ikon user agar lebih rapi */
-.btn-light .fa-user-circle {
-    font-size: 1.2rem;
-}
-
-
-        /* Konten */
-        .content {
-            margin-left: 250px;
-            transition: margin-left 0.3s ease-in-out;
-            padding: 20px;
-            color: #333D4B;
-        }
-
-        /* Offcanvas Menu (Muncul dari Kiri) */
-        .offcanvas-start {
-            width: 250px;
-            background: #1E4B9B;
-            color: white;
-        }
-
-        .offcanvas-body a {
-            font-size: 18px;
-            padding: 10px;
-            display: block;
-            text-decoration: none;
-            color: #FFFFFF;
-        }
-
-        .offcanvas-body a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Responsif */
-@media (max-width: 992px) {
-    .sidebar {
-        display: none;
-    }
-
-    .navbar {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    .program-card {
-        margin-bottom: 20px;
-    }
-}
-
-        .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-card h4 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .stat-card .icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            color: #1E4B9B;
-        }
-
-        .chart-container {
-            width: 100%;
-            max-width: 300px;
-            margin: 15px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - Dashboard">
+  <title>Dashboard - SMP Negeri 3 Jakarta</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  
+  <!-- Bootstrap & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-
-    <!-- Sidebar (Desktop) -->
-<div class="sidebar d-none d-lg-flex" id="sidebar">
+  <!-- Sidebar (Desktop) -->
+  <div class="sidebar d-none d-lg-flex" id="sidebar">
+    <!-- Logo & Identitas Sekolah -->
     <div class="logo-container">
-        <img src="assets/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
-        <div class="navbar-text">
-            <span class="navbar-title">Administrasi</span>
-            <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
-        </div>
+      <img src="assets/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
+      <div class="navbar-text">
+        <span class="navbar-title">Administrasi</span>
+        <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
+      </div>
     </div>
-    <h4>Menu</h4>
+
+    <!-- Pembatas -->
+    <hr class="sidebar-divider">
+
+    <!-- Menu Navigasi -->
+    <h4 class="sidebar-heading">Menu</h4>
     <ul class="nav flex-column" id="sidebarMenu">
-        <li class="nav-item">
-            <a class="nav-link" href="dashboard.html">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="profil.html">
-                <i class="fas fa-id-card"></i> Profil
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="program.html">
-                <i class="fas fa-chalkboard-teacher"></i> Program
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="mydrive.html">
-                <i class="fas fa-folder-open"></i> My Drive
-            </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="dashboard.html">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profil.html">
+          <i class="fas fa-id-card"></i> Profil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="program.html">
+          <i class="fas fa-book"></i> Program
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mydrive.html">
+          <i class="fas fa-folder-open"></i> My Drive
+        </a>
+      </li>
     </ul>
-</div>
+  </div>
 
-
-
-    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-fixed">
     <div class="container-fluid">
-        <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
-            <i class="fas fa-bars"></i>
+      <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="dropdown ms-auto">
+        <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" 
+                data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle me-2"></i>
+          <span id="username">Pengguna</span>
         </button>
-        
-        <!-- Username & Dropdown -->
-        <div class="dropdown ms-auto">
-            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle me-2"></i> 
-                <span id="username">Pengguna</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
-
-    <!-- Offcanvas (Mobile) Muncul dari Kiri -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+  <!-- Offcanvas (Mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menu</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="nav flex-column" id="offcanvasMenu">
-            <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profil.html">
-                    <i class="fas fa-id-card"></i> Profil
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="program.html">
-                    <i class="fas fa-chalkboard-teacher"></i> Program
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="mydrive.html">
-                    <i class="fas fa-folder-open"></i> My Drive
-                </a>
-            </li>
-        </ul>
+      <ul class="nav flex-column" id="offcanvasMenu">
+        <li class="nav-item">
+          <a class="nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profil.html">
+            <i class="fas fa-id-card"></i> Profil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="program.html">
+            <i class="fas fa-book"></i> Program
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mydrive.html">
+            <i class="fas fa-folder-open"></i> My Drive
+          </a>
+        </li>
+      </ul>
     </div>
-</div>
+  </div>
 
-<div class="content" id="content">
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" id="breadcrumb-current">Dashboard</li>
-        </ol>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+          <i class="bi bi-house-door"></i> Dashboard
+        </li>
+      </ol>
     </nav>
-    <div id="main-content">
-        <h3>Dashboard</h3>
-        <div class="dashboard-stats">
-            <div class="container my-5">
-                <h3 class="text-center fw-bold">Grafik Statistik Tenaga Pendidik & Kependidikan</h3>
-                <div class="d-flex justify-content-center">
-                    <canvas id="chartTenaga" width="400" height="200"></canvas>
-                </div>
-            </div>
-
-            <div class="container my-5">
-                <h3 class="text-center fw-bold">Tabel Tenaga Pendidik & Kependidikan</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered text-center" id="tenagaTable">
-                        <thead class="table-primary">
-                            <tr>
-                                <th colspan="2">Kategori</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">📊 Statistik Sekolah</h2>
+      <p class="text-center text-muted">Laporan visual tentang data kepegawaian, kesiswaan, inventaris, sarana prasarana, dan persuratan.</p>
+    
+      <!-- Chart Kepegawaian & Kesiswaan -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <h5 class="text-center">👨‍🏫 Kepegawaian</h5>
+            <p class="text-center text-muted">Distribusi jumlah guru dan staf di sekolah.</p>
+            <canvas id="chartKepegawaian"></canvas>
+          </div>
         </div>
+        <div class="col-md-6">
+          <div class="chart-container">
+            <h5 class="text-center">🎓 Kesiswaan</h5>
+            <p class="text-center text-muted">Jumlah siswa berdasarkan tingkatan kelas.</p>
+            <canvas id="chartKesiswaan"></canvas>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Chart Inventaris & Sarpras -->
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <h5 class="text-center">📦 Inventaris Sekolah</h5>
+            <p class="text-center text-muted">Jumlah barang di sekolah, seperti meja, kursi, komputer, dan proyektor.</p>
+            <canvas id="chartInventaris"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="chart-container">
+            <h5 class="text-center">🏫 Sarana & Prasarana</h5>
+            <p class="text-center text-muted">Kondisi fasilitas sekolah yang tersedia.</p>
+            <canvas id="chartSarpras"></canvas>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Chart Persuratan -->
+      <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+          <div class="chart-container">
+            <h5 class="text-center">✉️ Persuratan</h5>
+            <p class="text-center text-muted">Jumlah surat masuk dan keluar setiap bulan.</p>
+            <canvas id="chartPersuratan"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
-<footer class="text-dark py-4 mt-5">
+   </div> 
+  <!-- Footer -->
+  <footer class="text-dark py-4 mt-5">
     <div class="container">
-        <div class="d-flex justify-content-center flex-wrap">
-            <p class="mb-0">&copy; 2025 SMPN 3 Jakarta</p>
-            <span class="mx-2">|</span>
-            <p class="mb-0">Developed by Riyan Heriyanto</p>
-        </div>
+      <div class="d-flex justify-content-center flex-wrap">
+        <p class="mb-0">&copy; 2025 SMPN 3 Jakarta</p>
+        <span class="mx-2">|</span>
+        <p class="mb-0">Developed by Riyan Heriyanto</p>
+      </div>
     </div>
-</footer>
+  </footer>
+<style>
+/* ==========================
+   ✅ Styling untuk Chart Kotak
+   ========================== */
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/profil.js"></script>
+/* Wrapper untuk memastikan Chart kotak dan responsif */
+.chart-container {
+  width: 100%; /* Sesuai dengan lebar body */
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Proporsi kotak agar tidak gepeng */
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const user = JSON.parse(sessionStorage.getItem('user'));
-            if (!user) {
-                window.location.href = 'index.html';
-            }
-            document.getElementById('username').textContent = user ? user.name : 'Pengguna';
+/* Pastikan canvas Chart memiliki ukuran fleksibel */
+canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
 
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const page = this.getAttribute('data-page');
-                    document.getElementById('breadcrumb-current').innerText = this.innerText;
-                    document.getElementById('main-content').innerHTML = getContentForPage(page);
-                    document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+/* Layout agar chart tetap proporsional di layar besar */
+@media (min-width: 992px) {
+  .chart-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom di layar besar */
+    gap: 20px;
+  }
+}
 
-            document.getElementById('logoutButton').addEventListener('click', function (event) {
-                event.preventDefault();
-                if (confirm('Apakah Anda yakin ingin logout?')) {
-                    sessionStorage.removeItem('user');
-                    window.location.href = 'index.html';
-                }
-            });
-        });
+/* Satu kolom di layar kecil */
+@media (max-width: 768px) {
+  .chart-wrapper {
+    display: block;
+  }
+  .chart-container {
+    aspect-ratio: 4 / 3; /* Sesuaikan proporsi untuk layar kecil */
+  }
+}
 
-
+</style>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- JavaScript -->
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Ambil URL halaman saat ini
-        const currentPage = window.location.pathname.split('/').pop();
-
-        // Seleksi semua item menu
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        // Loop melalui semua menu dan tambahkan kelas active jika sesuai
-        menuItems.forEach(item => {
-            if (item.getAttribute('href') === currentPage) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
-    });
-
-
-
-   
-    document.addEventListener('DOMContentLoaded', function () {
-        // Ambil nama file halaman yang sedang dibuka
-        const currentPage = window.location.pathname.split('/').pop();
-
-        // Seleksi semua link dalam Offcanvas
-        const offcanvasLinks = document.querySelectorAll('#offcanvasMenu .nav-link');
-
-        // Loop melalui menu dan tambahkan kelas 'active' jika sesuai
-        offcanvasLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-    const user = JSON.parse(sessionStorage.getItem('user'));
-
-    // Jika user belum login, redirect ke halaman login
-    if (!user) {
+      const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+      
+      // Ambil elemen yang diperlukan
+      const usernameDisplay = document.getElementById('username');
+      const profileSetting = document.getElementById('profileSetting');
+      const logoutButton = document.getElementById('logoutButton');
+  
+      // Redirect ke login jika user tidak ditemukan
+      if (!loggedInUser) {
         window.location.href = 'index.html';
         return;
-    }
-
-    // Tampilkan username di navbar
-    document.getElementById('username').textContent = user.name;
-
-    // Fungsi logout yang benar
-    document.getElementById('logoutButton').addEventListener('click', function (event) {
+      }
+  
+      // Tampilkan username di navbar
+      usernameDisplay.textContent = loggedInUser.name.trim();
+  
+      // Event untuk Pengaturan Profil
+      profileSetting.addEventListener('click', function (event) {
+        event.preventDefault();
+        alert("Pengaturan profil akan segera tersedia!");
+      });
+  
+      // Event untuk Logout
+      logoutButton.addEventListener('click', function (event) {
         event.preventDefault();
         if (confirm('Apakah Anda yakin ingin logout?')) {
-            sessionStorage.removeItem('user');  // Hapus user dari sessionStorage
-            window.location.href = 'index.html';  // Redirect ke halaman login
+          sessionStorage.removeItem('user'); // Hapus sesi
+          window.location.href = 'index.html'; // Redirect ke halaman login
         }
-    });
-
-    // Mengatur menu aktif berdasarkan halaman saat ini
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('.menu-item, #offcanvasMenu .nav-link').forEach(item => {
-        if (item.getAttribute('href') === currentPage) {
-            item.classList.add('active');
+      });
+  
+      // Highlight menu yang aktif di sidebar dan offcanvas
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link, #offcanvasMenu .nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
         } else {
-            item.classList.remove('active');
+          link.classList.remove('active');
         }
+      });
     });
 
-    // Membuat grafik statistik menggunakan Chart.js
-    new Chart(document.getElementById("chartTenaga").getContext("2d"), {
-        type: "bar",
-        data: {
-            labels: ["Guru", "Tata Usaha", "Tenaga Keamanan", "Lainnya"],
-            datasets: [{
-                label: "Jumlah Tenaga Pendidik & Kependidikan",
-                data: [35, 10, 5, 3], 
-                backgroundColor: ["#4A90E2", "#50C878", "#FF5733", "#FFD700"],
-                borderColor: "#333",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true }
-            }
-        }
-    });
 
-    // Mengisi tabel dengan data statistik
-    const tableBody = document.getElementById("tableBody");
-    const tableData = [
-        { kategori: "Guru", total: 35 },
-        { kategori: "Tata Usaha", total: 10 },
-        { kategori: "Tenaga Keamanan", total: 5 },
-        { kategori: "Lainnya", total: 3 }
-    ];
-    
-    tableData.forEach(item => {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td colspan="2">${item.kategori}</td><td>${item.total}</td>`;
-        tableBody.appendChild(row);
-    });
-});
+
 
    
-    </script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Warna default untuk chart agar lebih menarik
+    const colorPalette = {
+      blue: '#36A2EB',
+      red: '#FF6384',
+      green: '#4CAF50',
+      yellow: '#FFC107',
+      orange: '#FF5722',
+      purple: '#8E44AD',
+      cyan: '#4BC0C0',
+      grey: '#95A5A6'
+    };
 
+    // Fungsi untuk membuat chart agar lebih dinamis
+    function createChart(ctx, type, data, options = {}) {
+      return new Chart(ctx, {
+        type,
+        data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+            duration: 1000,
+            easing: 'easeOutBounce'
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              mode: 'index',
+              intersect: false
+            },
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          },
+          ...options
+        }
+      });
+    }
+
+    // 1️⃣ Chart Kepegawaian (Guru & Staf)
+    createChart(document.getElementById('chartKepegawaian').getContext('2d'), 'doughnut', {
+      labels: ['Guru', 'Staf'],
+      datasets: [{
+        data: [40, 10], // Ubah sesuai data
+        backgroundColor: [colorPalette.blue, colorPalette.red]
+      }]
+    });
+
+    // 2️⃣ Chart Kesiswaan (Siswa per Tingkat)
+    createChart(document.getElementById('chartKesiswaan').getContext('2d'), 'bar', {
+      labels: ['Kelas 7', 'Kelas 8', 'Kelas 9'],
+      datasets: [{
+        label: 'Jumlah Siswa',
+        data: [150, 140, 130], // Ubah sesuai data
+        backgroundColor: [colorPalette.green, colorPalette.yellow, colorPalette.orange]
+      }]
+    }, {
+      scales: { y: { beginAtZero: true } }
+    });
+
+    // 3️⃣ Chart Inventaris (Barang)
+    createChart(document.getElementById('chartInventaris').getContext('2d'), 'pie', {
+      labels: ['Meja', 'Kursi', 'Komputer', 'Proyektor'],
+      datasets: [{
+        data: [50, 100, 20, 10], // Ubah sesuai data
+        backgroundColor: [colorPalette.red, colorPalette.blue, colorPalette.yellow, colorPalette.cyan]
+      }]
+    });
+
+    // 4️⃣ Chart Sarpras (Kondisi Sarana)
+    createChart(document.getElementById('chartSarpras').getContext('2d'), 'bar', {
+      labels: ['Baik', 'Rusak Ringan', 'Rusak Berat'],
+      datasets: [{
+        label: 'Jumlah Sarpras',
+        data: [80, 15, 5], // Ubah sesuai data
+        backgroundColor: [colorPalette.green, colorPalette.yellow, colorPalette.red]
+      }]
+    }, {
+      indexAxis: 'y', // Membuat chart horizontal
+      scales: { x: { beginAtZero: true } }
+    });
+
+    // 5️⃣ Chart Persuratan (Surat Masuk & Keluar)
+    createChart(document.getElementById('chartPersuratan').getContext('2d'), 'line', {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei'],
+      datasets: [
+        {
+          label: 'Surat Masuk',
+          data: [10, 12, 9, 15, 14], // Ubah sesuai data
+          borderColor: colorPalette.blue,
+          backgroundColor: colorPalette.blue + '50',
+          fill: true
+        },
+        {
+          label: 'Surat Keluar',
+          data: [8, 10, 7, 12, 11], // Ubah sesuai data
+          borderColor: colorPalette.red,
+          backgroundColor: colorPalette.red + '50',
+          fill: true
+        }
+      ]
+    });
+  });
+
+  </script>
 </body>
 </html>
