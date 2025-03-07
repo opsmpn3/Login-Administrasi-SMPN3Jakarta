@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - My Drive">
+  <title>My Drive - SMP Negeri 3 Jakarta</title>
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  
+  <!-- Bootstrap & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.min.css">
+</head>
+<body>
+  <!-- Sidebar (Desktop) -->
+  <div class="sidebar d-none d-lg-flex" id="sidebar">
+    <!-- Logo & Identitas Sekolah -->
+    <div class="logo-container">
+      <img src="../assets/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
+      <div class="navbar-text">
+        <span class="navbar-title">Administrasi</span>
+        <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
+      </div>
+    </div>
+
+    <!-- Pembatas -->
+    <hr class="sidebar-divider">
+
+    <!-- Menu Navigasi -->
+    <h4 class="sidebar-heading">Menu</h4>
+    <ul class="nav flex-column" id="sidebarMenu">
+      <li class="nav-item">
+        <a class="nav-link active" href="../dashboard.html">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../profil.html">
+          <i class="fas fa-id-card"></i> Profil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../program.html">
+          <i class="fas fa-book"></i> Program
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../mydrive.html">
+          <i class="fas fa-folder-open"></i> My Drive
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-fixed">
+    <div class="container-fluid">
+      <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="dropdown ms-auto">
+        <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" 
+                data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle me-2"></i>
+          <span id="username">Pengguna</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Offcanvas (Mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column" id="offcanvasMenu">
+        <li class="nav-item">
+          <a class="nav-link active" href="../dashboard.html">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../profil.html">
+            <i class="fas fa-id-card"></i> Profil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../program.html">
+            <i class="fas fa-book"></i> Program
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../mydrive.html">
+            <i class="fas fa-folder-open"></i> My Drive
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="program.html"><i class="bi bi-house-door"></i> Program</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Kepegawaian</li>
+      </ol>
+  </nav>
+  
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 fw-bold">👨‍🏫 Kepegawaian</h2>
+        <p class="text-center text-muted">Data kepegawaian sekolah, mencakup guru dan staf administrasi.</p>
+
+        <!-- Informasi Kepegawaian -->
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card-info">
+                    <h5>Total Pegawai</h5>
+                    <p class="count">50</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-info">
+                    <h5>Jumlah Guru</h5>
+                    <p class="count">40</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-info">
+                    <h5>Jumlah Staf</h5>
+                    <p class="count">10</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabel Data Pegawai -->
+        <div class="table-responsive mt-4">
+            <h4 class="fw-bold">📋 Daftar Guru dan Staf</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Email</th>
+                        <th>No. HP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Budi Santoso</td>
+                        <td>Guru Matematika</td>
+                        <td>budi.santoso@email.com</td>
+                        <td>0812-3456-7890</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Siti Aminah</td>
+                        <td>Guru Bahasa Indonesia</td>
+                        <td>siti.aminah@email.com</td>
+                        <td>0813-9876-5432</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Andi Wijaya</td>
+                        <td>Staf TU</td>
+                        <td>andi.wijaya@email.com</td>
+                        <td>0812-1111-2222</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="text-dark py-4 mt-5">
+    <div class="container">
+      <div class="d-flex justify-content-center flex-wrap">
+        <p class="mb-0">&copy; 2025 SMPN 3 Jakarta</p>
+        <span class="mx-2">|</span>
+        <p class="mb-0">Developed by Riyan Heriyanto</p>
+      </div>
+    </div>
+  </footer>
+<style>
+  /* ==========================
+   ✅ Styling Halaman Kepegawaian
+   ========================== */
+
+/* Styling untuk informasi kepegawaian */
+.card-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efek hover */
+.card-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Judul Card */
+.card-info h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+/* Angka Count */
+.card-info .count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Styling untuk Tabel */
+.table-responsive {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabel */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header Tabel */
+.table thead th {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 12px;
+}
+
+/* Isi Tabel */
+.table tbody tr td {
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .card-info {
+    padding: 15px;
+  }
+
+  .card-info h5 {
+    font-size: 1.1rem;
+  }
+
+  .card-info .count {
+    font-size: 1.8rem;
+  }
+
+  .table-responsive {
+    padding: 15px;
+  }
+
+  .table thead th {
+    font-size: 0.9rem;
+  }
+
+  .table tbody tr td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+</style>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+      
+      // Ambil elemen yang diperlukan
+      const usernameDisplay = document.getElementById('username');
+      const profileSetting = document.getElementById('profileSetting');
+      const logoutButton = document.getElementById('logoutButton');
+  
+      // Redirect ke login jika user tidak ditemukan
+      if (!loggedInUser) {
+        window.location.href = 'index.html';
+        return;
+      }
+  
+      // Tampilkan username di navbar
+      usernameDisplay.textContent = loggedInUser.name.trim();
+  
+      // Event untuk Pengaturan Profil
+      profileSetting.addEventListener('click', function (event) {
+        event.preventDefault();
+        alert("Pengaturan profil akan segera tersedia!");
+      });
+  
+      // Event untuk Logout
+      logoutButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (confirm('Apakah Anda yakin ingin logout?')) {
+          sessionStorage.removeItem('user'); // Hapus sesi
+          window.location.href = 'index.html'; // Redirect ke halaman login
+        }
+      });
+  
+      // Highlight menu yang aktif di sidebar dan offcanvas
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link, #offcanvasMenu .nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
