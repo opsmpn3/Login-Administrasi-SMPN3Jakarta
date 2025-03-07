@@ -1,379 +1,304 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - Dashboard">
-    <title>my Drive - SMP Negeri 3 Jakarta</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    
-    <!-- Bootstrap & FontAwesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.min.css">  
-
-    <style>
- :root {
-    --primary-color: #1E4B9B;
-    --text-light: #FFFFFF;
-    --text-dark: #333D4B;
-    --navbar-bg: #FFFFFF;
-    --hover-bg: rgba(255, 255, 255, 0.2);
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: var(--primary-color);
-    padding: 20px;
-    color: var(--text-light);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1100;
-}
-
-.sidebar .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.sidebar .logo-container img {
-    width: 50px;
-    height: auto;
-}
-
-.sidebar a {
-    color: var(--text-light);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    margin: 5px 0;
-    border-radius: 5px;
-    transition: 0.3s;
-    font-size: 16px;
-}
-
-.sidebar a i {
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-.sidebar a:hover, .sidebar a.active {
-    background: var(--hover-bg);
-}
-
-/* Navbar Tetap di Atas */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 250px;
-    width: calc(100% - 250px);
-    background-color: var(--navbar-bg);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    z-index: 1050;
-    transition: left 0.3s ease-in-out;
-}
-
-/* Konten harus punya padding agar tidak tertutup navbar */
-.content {
-    margin-left: 250px;
-    padding: 80px 20px 20px;
-    transition: margin-left 0.3s ease-in-out;
-    color: var(--text-dark);
-}
-
-/* Navbar Brand */
-.navbar-brand {
-    font-weight: bold;
-    color: var(--primary-color) !important;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navbar-logo {
-    width: 60px;
-    height: auto;
-}
-
-.navbar-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.2;
-}
-
-.navbar-title {
-    font-weight: bold;
-    color: #fffbfb;
-    font-size: 18px;
-}
-
-.navbar-subtitle {
-    font-size: 14px;
-    color: #bdbdbd;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    background-color: transparent;
-    margin-bottom: 20px;
-    padding: 0;
-}
-
-/* Toggler Sidebar */
-.toggle-btn {
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    transition: 0.3s;
-}
-
-/* Dropdown Perbaikan */
-.dropdown-menu {
-    position: absolute !important;
-    transform: translateY(0) !important;
-    left: auto !important;
-    right: 0 !important;
-    min-width: 200px;
-    top: 100% !important;
-}
-
-.btn-light.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-}
-
-.btn-light .fa-user-circle {
-    font-size: 1.2rem;
-}
-
-/* Offcanvas Menu */
-.offcanvas-start {
-    width: 250px;
-    background: var(--primary-color);
-    color: var(--text-light);
-}
-
-.offcanvas-body a {
-    font-size: 18px;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-    color: var(--text-light);
-}
-
-.offcanvas-body a:hover {
-    background-color: var(--hover-bg);
-}
-
-/* Responsif */
-@media (max-width: 992px) {
-    .sidebar {
-        display: none;
-    }
-
-    .navbar {
-        left: 0;
-        width: 100%;
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 80px 15px 20px;
-    }
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrasi SMP Negeri 3 Jakarta - My Drive">
+  <title>My Drive - SMP Negeri 3 Jakarta</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  
+  <!-- Bootstrap & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-
-    <!-- Sidebar (Desktop) -->
-<div class="sidebar d-none d-lg-flex" id="sidebar">
+  <!-- Sidebar (Desktop) -->
+  <div class="sidebar d-none d-lg-flex" id="sidebar">
+    <!-- Logo & Identitas Sekolah -->
     <div class="logo-container">
-        <img src="assets/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
-        <div class="navbar-text">
-            <span class="navbar-title">Administrasi</span>
-            <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
-        </div>
+      <img src="assets/logosnega.png" alt="Logo Sekolah" width="40" class="navbar-logo">
+      <div class="navbar-text">
+        <span class="navbar-title">Administrasi</span>
+        <span class="navbar-subtitle">SMP Negeri 3 Jakarta</span>
+      </div>
     </div>
-    <h4>Menu</h4>
+
+    <!-- Pembatas -->
+    <hr class="sidebar-divider">
+
+    <!-- Menu Navigasi -->
+    <h4 class="sidebar-heading">Menu</h4>
     <ul class="nav flex-column" id="sidebarMenu">
-        <li class="nav-item">
-            <a class="nav-link" href="dashboard.html">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="profil.html">
-                <i class="fas fa-id-card"></i> Profil
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="program.html">
-                <i class="fas fa-chalkboard-teacher"></i> Program
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="mydrive.html">
-                <i class="fas fa-folder-open"></i> My Drive
-            </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="dashboard.html">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profil.html">
+          <i class="fas fa-id-card"></i> Profil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="program.html">
+          <i class="fas fa-book"></i> Program
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mydrive.html">
+          <i class="fas fa-folder-open"></i> My Drive
+        </a>
+      </li>
     </ul>
-</div>
+  </div>
 
-
-
-    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-fixed">
     <div class="container-fluid">
-        <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft">
-            <i class="fas fa-bars"></i>
+      <button class="toggle-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="dropdown ms-auto">
+        <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" 
+                data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle me-2"></i>
+          <span id="username">Pengguna</span>
         </button>
-
-        <!-- Dropdown User -->
-        <div class="dropdown ms-auto">
-            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle me-2"></i>
-                <span id="username">Pengguna</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#" id="profileSetting"><i class="fas fa-cog"></i> Pengaturan Profil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
-
-    <!-- Offcanvas (Mobile) Muncul dari Kiri -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+  <!-- Offcanvas (Mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menu</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="nav flex-column" id="offcanvasMenu">
-            <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profil.html">
-                    <i class="fas fa-id-card"></i> Profil
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="program.html">
-                    <i class="fas fa-chalkboard-teacher"></i> Program
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="mydrive.html">
-                    <i class="fas fa-folder-open"></i> My Drive
-                </a>
-            </li>
-        </ul>
+      <ul class="nav flex-column" id="offcanvasMenu">
+        <li class="nav-item">
+          <a class="nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profil.html">
+            <i class="fas fa-id-card"></i> Profil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="program.html">
+            <i class="fas fa-book"></i> Program
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mydrive.html">
+            <i class="fas fa-folder-open"></i> My Drive
+          </a>
+        </li>
+      </ul>
     </div>
-</div>
+  </div>
 
-    <div class="content" id="content">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                <li class="breadcrumb-item active" id="breadcrumb-current">My Drive</li>
-            </ol>
-        </nav>
-    
-        <!-- Main Content dengan Grid 2 Kolom -->
-        <div id="main-content" class="container">
-            <div class="row">
-                <!-- Card Informasi My Drive -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card shadow-lg p-3">
-                        <div class="card-body">
-                            <h3 class="card-title"><i class="fas fa-info-circle"></i> Informasi My Drive</h3>
-                            <hr>
-                            <p>
-                                <strong>My Drive</strong> adalah sistem penyimpanan berbasis Google Drive yang digunakan untuk menyimpan, 
-                                mengelola, dan berbagi dokumen penting secara aman dan terstruktur. Pengguna dapat mengunggah, mengelola, dan berbagi dokumen 
-                                dengan izin akses yang telah ditentukan.
-                            </p>
-    
-                            <h5>🔄 Bagaimana Cara Menggunakannya?</h5>
-                            <ul>
-                                <li>📂 Setiap pengguna memiliki folder tersendiri di Google Drive.</li>
-                                <li>📥 Dokumen dapat diunggah, diperbarui, dan dibagikan sesuai kebutuhan.</li>
-                                <li>🔑 Akses diberikan berdasarkan akun login.</li>
-                                <li>🛡 Keamanan terjaga melalui sistem hak akses.</li>
-                            </ul>
-                        </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+          <i class="bi bi-house-door"></i> My Drive
+        </li>
+      </ol>
+    </nav>
+
+    <div id="main-content" class="container mt-5">
+      <h2 class="text-center mb-4 fw-bold">📂 My Drive Sekolah</h2>
+      <p class="text-center text-muted">Kelola dan akses dokumen penting Anda dengan mudah melalui My Drive.</p>
+  
+      <!-- Main Content dengan Grid 2 Kolom -->
+      <div id="main-content" class="container">
+        <div class="row">
+            <!-- Card Informasi My Drive -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow-lg p-3">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-info-circle"></i> Informasi My Drive</h3>
+                        <hr>
+                        <p>
+                            <strong>My Drive</strong> adalah sistem penyimpanan berbasis Google Drive yang digunakan untuk menyimpan, 
+                            mengelola, dan berbagi dokumen penting secara aman dan terstruktur. Pengguna dapat mengunggah, mengelola, dan berbagi dokumen 
+                            dengan izin akses yang telah ditentukan.
+                        </p>
+
+                        <h5>🔄 Bagaimana Cara Menggunakannya?</h5>
+                        <ul>
+                            <li>📂 Setiap pengguna memiliki folder tersendiri di Google Drive.</li>
+                            <li>📥 Dokumen dapat diunggah, diperbarui, dan dibagikan sesuai kebutuhan.</li>
+                            <li>🔑 Akses diberikan berdasarkan akun login.</li>
+                            <li>🛡 Keamanan terjaga melalui sistem hak akses.</li>
+                        </ul>
                     </div>
                 </div>
-    
-                <!-- Card Akses My Drive -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card shadow-lg p-3">
-                        <div class="card-body text-center">
-                            <h3 class="card-title"><i class="fas fa-folder-open"></i> Akses My Drive</h3>
-                            <hr>
-                            <p>Klik tombol di bawah untuk masuk ke folder pribadi Anda di Google Drive.</p>
-                            <button id="openDriveBtn" class="btn btn-primary btn-lg" disabled>
-                                <i class="fas fa-folder-open"></i> Buka Drive Saya
-                            </button>
-                        </div>
+            </div>
+
+            <!-- Card Akses My Drive -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow-lg p-3">
+                    <div class="card-body text-center">
+                        <h3 class="card-title"><i class="fas fa-folder-open"></i> Akses My Drive</h3>
+                        <hr>
+                        <p>Klik tombol di bawah untuk masuk ke folder pribadi Anda di Google Drive.</p>
+                        <button id="openDriveBtn" class="btn btn-primary btn-lg" disabled>
+                            <i class="fas fa-folder-open"></i> Buka Drive Saya
+                        </button>
                     </div>
                 </div>
-    
-                <!-- Card Syarat Dokumen Administrasi -->
-                <div class="col-lg-12">
-                    <div class="card shadow-lg p-3">
-                        <div class="card-body">
-                            <h3 class="card-title"><i class="fas fa-file-alt"></i> Syarat Dokumen Administrasi</h3>
-                            <hr>
-                            <p>Berikut adalah daftar dokumen yang harus disiapkan untuk keperluan administrasi:</p>
-                            <ul>
-                                <li>🆔 **Kartu Tanda Penduduk (KTP)** – Scan dalam format PDF/JPG.</li>
-                                <li>📜 **Akta Nikah** – Bagi yang sudah menikah, dalam bentuk scan resmi.</li>
-                                <li>🏠 **Kartu Keluarga (KK)** – Dokumen asli yang sudah di-scan.</li>
-                                <li>📄 **Ijazah & Sertifikat Pendidikan** – Semua tingkat pendidikan terakhir.</li>
-                                <li>💳 **NPWP (Nomor Pokok Wajib Pajak)** – Jika sudah memiliki.</li>
-                                <li>📑 **SK Pegawai & SK Jabatan** – Jika berlaku.</li>
-                                <li>📝 **Surat Keterangan Sehat** – Dari dokter resmi.</li>
-                            </ul>
-                            <p><strong>Pastikan semua dokumen dalam format PDF atau JPG sebelum diunggah ke My Drive.</strong></p>
-                        </div>
+            </div>
+
+            <!-- Card Syarat Dokumen Administrasi -->
+            <div class="col-lg-12">
+                <div class="card shadow-lg p-3">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-file-alt"></i> Syarat Dokumen Administrasi</h3>
+                        <hr>
+                        <p>Berikut adalah daftar dokumen yang harus disiapkan untuk keperluan administrasi:</p>
+                        <ul>
+                            <li>🆔 **Kartu Tanda Penduduk (KTP)** – Scan dalam format PDF/JPG.</li>
+                            <li>📜 **Akta Nikah** – Bagi yang sudah menikah, dalam bentuk scan resmi.</li>
+                            <li>🏠 **Kartu Keluarga (KK)** – Dokumen asli yang sudah di-scan.</li>
+                            <li>📄 **Ijazah & Sertifikat Pendidikan** – Semua tingkat pendidikan terakhir.</li>
+                            <li>💳 **NPWP (Nomor Pokok Wajib Pajak)** – Jika sudah memiliki.</li>
+                            <li>📑 **SK Pegawai & SK Jabatan** – Jika berlaku.</li>
+                            <li>📝 **Surat Keterangan Sehat** – Dari dokter resmi.</li>
+                        </ul>
+                        <p><strong>Pastikan semua dokumen dalam format PDF atau JPG sebelum diunggah ke My Drive.</strong></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<footer class="text-dark py-4 mt-5">
+</div>
+</div>
+  <!-- Footer -->
+  <footer class="text-dark py-4 mt-5">
     <div class="container">
-        <div class="d-flex justify-content-center flex-wrap">
-            <p class="mb-0">&copy; 2025 SMPN 3 Jakarta</p>
-            <span class="mx-2">|</span>
-            <p class="mb-0">Developed by Riyan Heriyanto</p>
-        </div>
+      <div class="d-flex justify-content-center flex-wrap">
+        <p class="mb-0">&copy; 2025 SMPN 3 Jakarta</p>
+        <span class="mx-2">|</span>
+        <p class="mb-0">Developed by Riyan Heriyanto</p>
+      </div>
     </div>
-</footer>
+  </footer>
+<style>
+/* ==========================
+   ✅ Styling Halaman My Drive (Lebih Elegan)
+   ========================== */
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+/* Styling utama untuk card */
+.card {
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+/* Efek hover pada card */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Judul Card */
+.card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title i {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+/* Styling List */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  font-size: 1rem;
+  padding: 5px 0;
+}
+
+/* Styling tombol */
+.btn-lg {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efek Hover pada tombol */
+.btn-lg:hover {
+  opacity: 0.85;
+}
+
+/* Styling khusus untuk tombol akses Drive */
+#openDriveBtn {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efek hover pada tombol Drive */
+#openDriveBtn:hover {
+  background: #0056b3;
+}
+
+/* ==========================
+   ✅ Responsif untuk layar kecil
+   ========================== */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  ul li {
+    font-size: 0.95rem;
+  }
+
+  .btn-lg {
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+}
+
+</style>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
