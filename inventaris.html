@@ -207,31 +207,72 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const user = JSON.parse(sessionStorage.getItem('user'));
+        // Fungsi untuk menampilkan catatan
+function tampilkanCatatan() {
+    // ... (kode untuk mengambil dan menampilkan catatan dari database)
+}
 
-            if (!user) {
-                window.location.href = 'index.html';
+// Event listener untuk menghapus catatan
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("hapus-btn")) {
+        const id = event.target.dataset.id;
+        if (confirm("Apakah Anda yakin ingin menghapus catatan ini?")) {
+            db.collection("catatan").doc(id).delete().then(() => {
+                console.log("Catatan berhasil dihapus!");
+                tampilkanCatatan(); // Refresh tampilan catatan setelah dihapus
+            }).catch((error) => {
+                console.error("Error menghapus catatan: ", error);
+            });
+        }
+    }
+});
+
+// Event listener untuk mengisi form edit
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("edit-btn")) {
+        const id = event.target.dataset.id;
+        db.collection("catatan").doc(id).get().then((doc) => {
+            if (doc.exists) {
+                const data = doc.data();
+                document.getElementById("editJudul").value = data.judul;
+                document.getElementById("editIsi").value = data.isi;
+                document.getElementById("editTanggal").value = data.tanggal;
+                document.getElementById("editKategori").value = data.kategori;
+                document.getElementById("editId").value = doc.id; // Simpan ID untuk update
+                // ... (tampilkan modal edit atau form edit)
+            } else {
+                console.log("Dokumen tidak ditemukan!");
             }
-
-            document.getElementById('backBtn').addEventListener('click', function () {
-                window.location.href = 'dashboard.html';
-            });
-
-            document.getElementById('profileBtn').addEventListener('click', function () {
-                window.location.href = 'profile.html';
-            });
-
-            // Event listener untuk menu cards
-            const menuCards = document.querySelectorAll('.menu-card');
-            menuCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const formUrl = card.dataset.formUrl;
-                    const formFrame = document.getElementById('formFrame');
-                    formFrame.src = formUrl;
-                });
-            });
+        }).catch((error) => {
+            console.error("Error mendapatkan dokumen: ", error);
         });
+    }
+});
+
+// Event listener untuk submit form edit
+document.getElementById("formEdit").addEventListener("submit", (event) => {
+    event.preventDefault(); // Mencegah form submit default
+    const id = document.getElementById("editId").value;
+    const judul = document.getElementById("editJudul").value;
+    const isi = document.getElementById("editIsi").value;
+    const tanggal = document.getElementById("editTanggal").value;
+    const kategori = document.getElementById("editKategori").value;
+
+    db.collection("catatan").doc(id).update({
+        judul: judul,
+        isi: isi,
+        tanggal: tanggal,
+        kategori: kategori
+    }).then(() => {
+        console.log("Catatan berhasil diupdate!");
+        tampilkanCatatan(); // Refresh tampilan catatan setelah diupdate
+        // ... (tutup modal edit atau reset form edit)
+    }).catch((error) => {
+        console.error("Error mengupdate catatan: ", error);
+    });
+});
+
+tampilkanCatatan(); // Panggil fungsi untuk menampilkan catatan saat halaman dimuat
     </script>
 
 </body>
