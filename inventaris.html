@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
-        /* Reset & Layout */
         body, html {
             font-family: 'Inter', sans-serif;
             background-color: #f4f4f4;
@@ -18,7 +17,6 @@
             min-height: 100vh;
         }
 
-        /* Header Tetap */
         .header {
             background-color: #4A90E2;
             color: white;
@@ -37,7 +35,6 @@
             cursor: pointer;
         }
 
-        /* Kontainer Utama */
         .main-content {
             flex: 1;
             margin-top: 55px;
@@ -45,29 +42,6 @@
             overflow-y: auto;
         }
 
-        /* Card My Drive */
-        .card-drive {
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .card-drive h2 {
-            color: #4A90E2;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .card-drive p {
-            font-size: 14px;
-            color: #555;
-            margin: 0;
-        }
-
-        /* Grid Menu */
         .menu-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -100,7 +74,6 @@
             color: #333;
         }
 
-        /* Footer Tetap di Bawah */
         .footer {
             background-color: #4A90E2;
             color: white;
@@ -108,49 +81,23 @@
             padding: 10px;
             font-size: 14px;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
-        }
-
-        /* Footer Teks */
-        .footer p {
-            margin: 0;
-        }
-
-        /* Untuk memastikan elemen dalam footer tetap sejajar */
-        .footer span {
-            margin: 0 10px;
-        }
-
-        /* Styling untuk Judul Halaman */
-        .section-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #4A90E2;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        /* Styling untuk Deskripsi */
-        .section-description {
-            text-align: center;
-            font-size: 14px;
-            color: #555;
-            max-width: 90%;
-            margin: 0 auto 15px auto;
-            line-height: 1.6;
         }
 
         /* Modal Styling */
         .modal-body {
-            padding: 0; /* Remove default padding for iframe */
+            padding: 0;
         }
 
         .modal-dialog {
-            max-width: 90%; /* Adjust modal width as needed */
-            margin: 1.75rem auto; /* Keep default vertical centering */
+            max-width: 90%;
+            margin: 1.75rem auto;
+        }
+
+        #formFrame {
+            width: 100%;
+            height: 500px;
+            border: none;
         }
     </style>
 </head>
@@ -168,19 +115,19 @@
         </p>
 
         <div class="menu-container">
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="PASTE_LINK_GOOGLE_FORM_BUKU_INVENTARIS_DI_SINI">
+            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfBUKU8XQzFjBdLOXdfV-78/viewform">
                 <i class="bi bi-clipboard"></i>
                 <h3>Buku Inventaris</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="PASTE_LINK_GOOGLE_FORM_BARANG_MASUK_DI_SINI">
+            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSdX7Q98/viewform">
                 <i class="bi bi-box-arrow-in-down"></i>
                 <h3>Penerimaan Barang Masuk</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScYVvH5mF58h30k4P_O6Wp_gqK-gD9IeP4rC9V-8P1v8X30A/viewform?usp=sf_link">
+            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScYVvH5mF58h30k4P_O6Wp_gqK-gD9IeP4rC9V-8P1v8X30A/viewform">
                 <i class="bi bi-x-circle"></i>
                 <h3>Barang Habis Pakai</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="PASTE_LINK_GOOGLE_FORM_PEMINJAMAN_BARANG_DI_SINI">
+            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfhXX2C/viewform">
                 <i class="bi bi-box-arrow-up-right"></i>
                 <h3>Peminjaman Barang</h3>
             </div>
@@ -199,7 +146,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <iframe id="formFrame" src="" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Memuat...</iframe>
+                    <iframe id="formFrame" src="" width="100%" height="500"></iframe>
                 </div>
             </div>
         </div>
@@ -207,72 +154,58 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Fungsi untuk menampilkan catatan
-function tampilkanCatatan() {
-    // ... (kode untuk mengambil dan menampilkan catatan dari database)
-}
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuCards = document.querySelectorAll(".menu-card");
+            const formFrame = document.getElementById("formFrame");
 
-// Event listener untuk menghapus catatan
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("hapus-btn")) {
-        const id = event.target.dataset.id;
-        if (confirm("Apakah Anda yakin ingin menghapus catatan ini?")) {
-            db.collection("catatan").doc(id).delete().then(() => {
-                console.log("Catatan berhasil dihapus!");
-                tampilkanCatatan(); // Refresh tampilan catatan setelah dihapus
-            }).catch((error) => {
-                console.error("Error menghapus catatan: ", error);
+            menuCards.forEach(card => {
+                card.addEventListener("click", function() {
+                    const formUrl = card.getAttribute("data-form-url");
+                    if (formUrl) {
+                        formFrame.src = formUrl;
+                    }
+                });
             });
-        }
-    }
-});
-
-// Event listener untuk mengisi form edit
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("edit-btn")) {
-        const id = event.target.dataset.id;
-        db.collection("catatan").doc(id).get().then((doc) => {
-            if (doc.exists) {
-                const data = doc.data();
-                document.getElementById("editJudul").value = data.judul;
-                document.getElementById("editIsi").value = data.isi;
-                document.getElementById("editTanggal").value = data.tanggal;
-                document.getElementById("editKategori").value = data.kategori;
-                document.getElementById("editId").value = doc.id; // Simpan ID untuk update
-                // ... (tampilkan modal edit atau form edit)
-            } else {
-                console.log("Dokumen tidak ditemukan!");
-            }
-        }).catch((error) => {
-            console.error("Error mendapatkan dokumen: ", error);
         });
-    }
-});
 
-// Event listener untuk submit form edit
-document.getElementById("formEdit").addEventListener("submit", (event) => {
-    event.preventDefault(); // Mencegah form submit default
-    const id = document.getElementById("editId").value;
-    const judul = document.getElementById("editJudul").value;
-    const isi = document.getElementById("editIsi").value;
-    const tanggal = document.getElementById("editTanggal").value;
-    const kategori = document.getElementById("editKategori").value;
+        // Fungsi untuk menampilkan catatan
+        function tampilkanCatatan() {
+            // Kode untuk menampilkan catatan dari database
+        }
 
-    db.collection("catatan").doc(id).update({
-        judul: judul,
-        isi: isi,
-        tanggal: tanggal,
-        kategori: kategori
-    }).then(() => {
-        console.log("Catatan berhasil diupdate!");
-        tampilkanCatatan(); // Refresh tampilan catatan setelah diupdate
-        // ... (tutup modal edit atau reset form edit)
-    }).catch((error) => {
-        console.error("Error mengupdate catatan: ", error);
-    });
-});
+        // Event listener untuk menghapus catatan
+        document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("hapus-btn")) {
+                const id = event.target.dataset.id;
+                if (confirm("Apakah Anda yakin ingin menghapus catatan ini?")) {
+                    db.collection("catatan").doc(id).delete().then(() => {
+                        console.log("Catatan berhasil dihapus!");
+                        tampilkanCatatan(); 
+                    }).catch((error) => {
+                        console.error("Error menghapus catatan: ", error);
+                    });
+                }
+            }
+        });
 
-tampilkanCatatan(); // Panggil fungsi untuk menampilkan catatan saat halaman dimuat
+        // Event listener untuk mengisi form edit
+        document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("edit-btn")) {
+                const id = event.target.dataset.id;
+                db.collection("catatan").doc(id).get().then((doc) => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        document.getElementById("editJudul").value = data.judul;
+                        document.getElementById("editIsi").value = data.isi;
+                        document.getElementById("editTanggal").value = data.tanggal;
+                        document.getElementById("editKategori").value = data.kategori;
+                        document.getElementById("editId").value = doc.id;
+                    }
+                });
+            }
+        });
+
+        tampilkanCatatan(); 
     </script>
 
 </body>
