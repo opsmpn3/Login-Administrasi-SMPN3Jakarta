@@ -7,7 +7,111 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
-        /* Gaya yang sama seperti sebelumnya */
+        /* Gaya yang sama seperti kepegawaian.html */
+        body, html {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        .header i {
+            font-size: 26px;
+            cursor: pointer;
+        }
+        .main-content {
+            flex: 1;
+            margin-top: 55px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .footer {
+            background-color: #4A90E2;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer span {
+            margin: 0 10px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .section-description {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            max-width: 90%;
+            margin: 0 auto 15px auto;
+            line-height: 1.6;
+        }
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+        .menu-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .menu-card:hover {
+            background-color: #e3f2fd;
+        }
+        .menu-card i {
+            font-size: 36px;
+            color: #4A90E2;
+        }
+        .menu-card h3 {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -17,32 +121,84 @@
     </div>
     <div class="main-content">
         <h2 class="section-title">Dokumen Pegawai</h2>
+        <p class="section-description">
+            Kelola dan lihat dokumen penting pegawai, serta catatan username dan password aplikasi.
+        </p>
         <div class="menu-container">
             <div class="menu-card" id="daftarCatatan">
                 <i class="bi bi-list-task"></i>
                 <h3>Daftar Catatan</h3>
             </div>
         </div>
+        <button id="tambahCatatanBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahCatatanModal">Tambah Catatan</button>
+        <table id="catatanTable">
+            <thead>
+                <tr>
+                    <th>Aplikasi</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Catatan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
     </div>
     <div class="footer">
         &copy; 2025 SMP Negeri 3 Jakarta
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const user = JSON.parse(sessionStorage.getItem('user'));
-            if (!user) {
-                window.location.href = 'index.html';
-            }
-            document.getElementById('backBtn').addEventListener('click', function () {
-                window.location.href = 'kepegawaian.html';
-            });
-            document.getElementById('profileBtn').addEventListener('click', function () {
-                window.location.href = 'profile.html';
-            });
-            document.getElementById('daftarCatatan').addEventListener('click', function () {
-                window.location.href = 'daftar-catatan.html';
-            });
-        });
-    </script>
-</body>
-</html>
+
+    <div class="modal fade" id="tambahCatatanModal" tabindex="-1" aria-labelledby="tambahCatatanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahCatatanModalLabel">Tambah Catatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="catatanForm">
+                        <div class="form-group">
+                            <label for="aplikasi">Aplikasi:</label>
+                            <input type="text" id="aplikasi" name="aplikasi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="catatanTambahan">Catatan Tambahan:</label>
+                            <textarea id="catatanTambahan" name="catatanTambahan" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan Catatan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editCatatanModal" tabindex="-1" aria-labelledby="editCatatanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editCatatanModalLabel">Edit Catatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editCatatanForm">
+                        <input type="hidden" id="editCatatanId">
+                        <div class="form-group">
+                            <label for="editAplikasi">Aplikasi:</label>
+                            <input type="text" id="editAplikasi" name="editAplikasi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editUsername">Username:</label>
+                            <input type="text" id="editUsername" name="editUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPassword">Password:</label>
+                            <input type="password" id="editPassword
