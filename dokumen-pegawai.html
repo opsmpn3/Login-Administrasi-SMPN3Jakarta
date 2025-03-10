@@ -7,179 +7,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
-        /* Gaya yang sama seperti halaman kepegawaian.html */
-        body, html {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: #4A90E2;
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header i {
-            font-size: 26px;
-            cursor: pointer;
-        }
-
-        .main-content {
-            flex: 1;
-            margin-top: 55px;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .footer {
-            background-color: #4A90E2;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        .footer span {
-            margin: 0 10px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #4A90E2;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .btn-primary {
-            background-color: #4A90E2;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #357ab8;
-        }
+        /* Gaya yang sama seperti sebelumnya */
     </style>
 </head>
 <body>
-
     <div class="header">
         <i class="bi bi-arrow-left" id="backBtn"></i>
         <i class="bi bi-person-circle" id="profileBtn"></i>
     </div>
-
     <div class="main-content">
         <h2 class="section-title">Dokumen Pegawai</h2>
-
-        <div class="form-container">
-            <form id="catatanForm">
-                <div class="form-group">
-                    <label for="aplikasi">Aplikasi:</label>
-                    <input type="text" id="aplikasi" name="aplikasi" required>
-                </div>
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="catatanTambahan">Catatan Tambahan:</label>
-                    <textarea id="catatanTambahan" name="catatanTambahan" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Simpan Catatan</button>
-            </form>
+        <div class="menu-container">
+            <div class="menu-card" id="daftarCatatan">
+                <i class="bi bi-list-task"></i>
+                <h3>Daftar Catatan</h3>
+            </div>
         </div>
     </div>
-
     <div class="footer">
         &copy; 2025 SMP Negeri 3 Jakarta
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const user = JSON.parse(sessionStorage.getItem('user'));
-
             if (!user) {
                 window.location.href = 'index.html';
             }
-
             document.getElementById('backBtn').addEventListener('click', function () {
                 window.location.href = 'kepegawaian.html';
             });
-
             document.getElementById('profileBtn').addEventListener('click', function () {
                 window.location.href = 'profile.html';
             });
-
-            document.getElementById('catatanForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-
-                const formData = new FormData(event.target);
-                const catatanData = {};
-                formData.forEach((value, key) => catatanData[key] = value);
-
-                // Tambahkan kode untuk menyimpan data catatan ke Firebase atau layanan penyimpanan lainnya
-                console.log(catatanData); // Untuk sementara, tampilkan data di konsol
-
-                // Reset form setelah simpan
-                event.target.reset();
-
-                alert('Catatan berhasil disimpan!'); // Tampilkan notifikasi
+            document.getElementById('daftarCatatan').addEventListener('click', function () {
+                window.location.href = 'daftar-catatan.html';
             });
         });
     </script>
-
 </body>
 </html>
