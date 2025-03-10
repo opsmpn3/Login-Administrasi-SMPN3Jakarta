@@ -17,24 +17,6 @@
             min-height: 100vh;
         }
 
-        .header {
-            background-color: #4A90E2;
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header i {
-            font-size: 26px;
-            cursor: pointer;
-        }
-
         .main-content {
             flex: 1;
             margin-top: 55px;
@@ -63,28 +45,6 @@
             background-color: #e3f2fd;
         }
 
-        .menu-card i {
-            font-size: 36px;
-            color: #4A90E2;
-        }
-
-        .menu-card h3 {
-            font-size: 14px;
-            margin-top: 8px;
-            color: #333;
-        }
-
-        .footer {
-            background-color: #4A90E2;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* Modal Styling */
         .modal-body {
             padding: 0;
         }
@@ -103,41 +63,30 @@
 </head>
 <body>
 
-    <div class="header">
-        <i class="bi bi-arrow-left" id="backBtn"></i>
-        <i class="bi bi-person-circle" id="profileBtn"></i>
-    </div>
-
     <div class="main-content">
         <h2 class="section-title">Inventaris</h2>
-        <p style="text-align: center; font-size: 14px; color: #555;">
-            Kelola inventaris sekolah, barang masuk, barang habis pakai, dan peminjaman di sini.
-        </p>
 
         <div class="menu-container">
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfBUKU8XQzFjBdLOXdfV-78/viewform">
+            <div class="menu-card" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfBUKU8XQzFjBdLOXdfV-78/viewform">
                 <i class="bi bi-clipboard"></i>
                 <h3>Buku Inventaris</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSdX7Q98/viewform">
+            <div class="menu-card" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSdX7Q98/viewform">
                 <i class="bi bi-box-arrow-in-down"></i>
                 <h3>Penerimaan Barang Masuk</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScYVvH5mF58h30k4P_O6Wp_gqK-gD9IeP4rC9V-8P1v8X30A/viewform">
+            <div class="menu-card" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScYVvH5mF58h30k4P_O6Wp_gqK-gD9IeP4rC9V-8P1v8X30A/viewform">
                 <i class="bi bi-x-circle"></i>
                 <h3>Barang Habis Pakai</h3>
             </div>
-            <div class="menu-card" data-bs-toggle="modal" data-bs-target="#formModal" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfhXX2C/viewform">
+            <div class="menu-card" data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSfhXX2C/viewform">
                 <i class="bi bi-box-arrow-up-right"></i>
                 <h3>Peminjaman Barang</h3>
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        &copy; 2025 SMP Negeri 3 Jakarta
-    </div>
-
+    <!-- Modal -->
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -158,54 +107,26 @@
             const menuCards = document.querySelectorAll(".menu-card");
             const formFrame = document.getElementById("formFrame");
 
+            function isMobileDevice() {
+                return /Mobi|Android/i.test(navigator.userAgent);
+            }
+
             menuCards.forEach(card => {
                 card.addEventListener("click", function() {
                     const formUrl = card.getAttribute("data-form-url");
-                    if (formUrl) {
+
+                    if (isMobileDevice()) {
+                        // Jika perangkat adalah ponsel, buka di tab baru
+                        window.open(formUrl, "_blank");
+                    } else {
+                        // Jika di desktop, tampilkan di modal dengan iframe
                         formFrame.src = formUrl;
+                        const modal = new bootstrap.Modal(document.getElementById("formModal"));
+                        modal.show();
                     }
                 });
             });
         });
-
-        // Fungsi untuk menampilkan catatan
-        function tampilkanCatatan() {
-            // Kode untuk menampilkan catatan dari database
-        }
-
-        // Event listener untuk menghapus catatan
-        document.addEventListener("click", (event) => {
-            if (event.target.classList.contains("hapus-btn")) {
-                const id = event.target.dataset.id;
-                if (confirm("Apakah Anda yakin ingin menghapus catatan ini?")) {
-                    db.collection("catatan").doc(id).delete().then(() => {
-                        console.log("Catatan berhasil dihapus!");
-                        tampilkanCatatan(); 
-                    }).catch((error) => {
-                        console.error("Error menghapus catatan: ", error);
-                    });
-                }
-            }
-        });
-
-        // Event listener untuk mengisi form edit
-        document.addEventListener("click", (event) => {
-            if (event.target.classList.contains("edit-btn")) {
-                const id = event.target.dataset.id;
-                db.collection("catatan").doc(id).get().then((doc) => {
-                    if (doc.exists) {
-                        const data = doc.data();
-                        document.getElementById("editJudul").value = data.judul;
-                        document.getElementById("editIsi").value = data.isi;
-                        document.getElementById("editTanggal").value = data.tanggal;
-                        document.getElementById("editKategori").value = data.kategori;
-                        document.getElementById("editId").value = doc.id;
-                    }
-                });
-            }
-        });
-
-        tampilkanCatatan(); 
     </script>
 
 </body>
