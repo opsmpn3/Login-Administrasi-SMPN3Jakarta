@@ -188,36 +188,42 @@ body, html {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const user = JSON.parse(sessionStorage.getItem('user'));
-
+    
+            // Jika user belum login, redirect ke halaman login
             if (!user) {
                 window.location.href = 'index.html';
             }
-
+    
+            // Navigasi tombol kembali
             document.getElementById('backBtn').addEventListener('click', function () {
                 window.location.href = 'dashboard.html';
             });
-
+    
+            // Navigasi tombol profil
             document.getElementById('profileBtn').addEventListener('click', function () {
                 window.location.href = 'profile.html';
             });
-
+    
+            // Navigasi menu-card sesuai halaman masing-masing
             document.getElementById('bukuInduk').addEventListener('click', function () {
                 window.location.href = 'buku-induk.html';
             });
-
+    
+            // **Menu Buku Klaper Sekarang Mengarah ke Google Spreadsheet**
             document.getElementById('bukuKlaper').addEventListener('click', function () {
-                window.location.href = 'buku-klaper.html';
+                window.open('https://docs.google.com/spreadsheets/d/1HVL9CL12IaRQZxUNx3Kh21P3pXKkWtlcrqdLJ2EY0bI/edit?usp=sharing', '_blank');
             });
-
+    
             document.getElementById('daftarNama').addEventListener('click', function () {
                 window.location.href = 'daftar-nama.html';
             });
-
+    
             document.getElementById('prestasiSiswa').addEventListener('click', function () {
                 window.location.href = 'prestasi-siswa.html';
             });
         });
     </script>
+    
 
 </body>
 </html>
