@@ -331,6 +331,9 @@
         font-size: 16px;
     }
 }
+.modal-backdrop.show {
+    opacity: 0.9; /* Sesuaikan tingkat kegelapan sesuai keinginan */
+}
 
     </style>
 </head>
@@ -423,24 +426,20 @@
           </div>
       </div>
   </div>
+<div class="modal fade" id="welcomeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang!</h5>
+            </div>
+            <div class="modal-body">
+                <p id="welcomeMessage"></p>
+                <p><strong>My Drive:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- Modal Selamat Datang -->
-  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang!</h5>
-              </div>
-              <div class="modal-body">
-                  <p id="welcomeMessage"></p>
-                  <p><strong>My Drive:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
-              </div>
-          </div>
-      </div>
-  </div>
 
   <!-- Footer -->
   <div class="footer">
