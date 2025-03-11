@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajukan Usulan - SMP Negeri 3 Jakarta</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* (CSS yang sama seperti sebelumnya) */
+        body, html {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header i {
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-top: 55px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .card-drive {
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .card-drive h2 {
+            color: #4A90E2;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-drive p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .menu-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            background-color: #e3f2fd;
+        }
+
+        .menu-card i {
+            font-size: 36px;
+            color: #4A90E2;
+        }
+
+        .menu-card h3 {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #4A90E2;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer span {
+            margin: 0 10px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            max-width: 90%;
+            margin: 0 auto 15px auto;
+            line-height: 1.6;
+        }
+
+        .drive-btn {
+            background: #34a853;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            margin-top: 20px;
+        }
+
+        .drive-btn:hover {
+            background-color: #2b8c43;
+            transform: scale(1.02);
+        }
+
+        .info-btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .info-btn:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body, html {
+            font-size: 16px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+        }
+
+        .section-description {
+            font-size: 1em;
+        }
+
+        .drive-btn, .info-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .drive-btn, .info-btn {
+                width: auto;
+            }
+        }
+
+        .header, .footer {
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .header, .footer {
+                padding: 12px 20px;
+            }
+        }
+
+        .main-content {
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        .card-drive {
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .card-drive {
+                padding: 20px;
+            }
+        }
+
+        .modal-body {
+            max-width: 100%;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modal-body ul li {
+            background: #ffffff;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .modal-body ul li:hover {
+            background: #e3f2fd;
+        }
+
+        .modal-body ul li::before {
+            content: "";
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                padding: 15px;
+            }
+
+            .modal-body ul li {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .modal-body ul li::before {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <i class="bi bi-house-door" id="homeBtn"></i>
+        <i class="bi bi-person-circle" id="profileBtn"></i>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h2 class="mb-4 text-center fs-4">Ajukan Usulan</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Kartu Pegawai</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pembuatan Kartu Pegawai.</p>
+                            <a href="#" class="btn btn-primary kartu-pegawai-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Tunjangan</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan tunjangan.</p>
+                            <a href="#" class="btn btn-primary tunjangan-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">PPJG</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk PPJG.</p>
+                            <a href="#" class="btn btn-primary ppjg-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Kenaikan Pangkat</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk kenaikan pangkat.</p>
+                            <a href="#" class="btn btn-primary kenaikan-pangkat-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Cuti</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan cuti.</p>
+                            <a href="#" class="btn btn-primary cuti-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Pensiun</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan pensiun.</p>
+                            <a href="#" class="btn btn-primary pensiun-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Mutasi</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan mutasi.</p>
+                            <a href="#" class="btn btn-primary mutasi-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Tamsil</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan Tamsil.</p>
+                            <a href="#" class="btn btn-primary tamsil-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100">
+                    <div class="card card-usulan mb-3 shadow h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-5">Penghargaan</h5>
+                            <p class="card-text fs-6">Ajukan usulan untuk pengajuan penghargaan.</p>
+                            <a href="#" class="btn btn-primary penghargaan-link w-100 fs-6">Ajukan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="mb-0">&copy;2025 SMP Negeri 3 Jakarta</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('homeBtn').addEventListener('click', function() {
+            window.location.href = 'dashboard-user.html'; // Ganti dengan URL dashboard Anda
+        });
+    
+        document.getElementById('profileBtn').addEventListener('click', function() {
+            // Tambahkan logika untuk menampilkan profil
+            // Contoh: mengarahkan ke halaman profil.html
+            window.location.href = 'profile.html';
+            // Atau, jika Anda ingin menampilkan profil dalam modal:
+            // $('#profileModal').modal('show');
+        });
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            const nama = user.name;
+    
+            // Ganti link Google Form dengan link Anda
+            const kartuPegawaiLink = `https://forms.gle/BAEbfg5At5Gaz1sq9?entry.123456789=${encodeURIComponent(nama)}`;
+            const tunjanganLink = `https://forms.gle/sy2CrufMZQz87jQC8?entry.123456789=${encodeURIComponent(nama)}`;
+            const ppjgLink = `https://forms.gle/pwjiXaeYeudovnnQ9?entry.123456789=${encodeURIComponent(nama)}`;
+            const kenaikanPangkatLink = `https://forms.gle/4ahnoTaAb1fQtuer7?entry.123456789=${encodeURIComponent(nama)}`;
+            const cutiLink = `https://forms.gle/BZqyQi4PDMH4AzNt9?entry.123456789=${encodeURIComponent(nama)}`;
+            const pensiunLink = `https://forms.gle/5vVuwjBWCn1px8aq8?entry.123456789=${encodeURIComponent(nama)}`;
+            const mutasiLink = `https://forms.gle/3vKeSyP2JNV78gqq8?entry.123456789=${encodeURIComponent(nama)}`;
+            const tamsilLink = `https://forms.gle/qJdceL3BRU8AHuHi6?entry.123456789=${encodeURIComponent(nama)}`;
+            const penghargaanLink = `https://forms.gle/DHJ2VdoZazQBfHqF8?entry.123456789=${encodeURIComponent(nama)}`;
+    
+            // Tambahkan event listener untuk setiap link
+            document.querySelector('.kartu-pegawai-link').href = kartuPegawaiLink;
+            document.querySelector('.tunjangan-link').href = tunjanganLink;
+            document.querySelector('.ppjg-link').href = ppjgLink;
+            document.querySelector('.kenaikan-pangkat-link').href = kenaikanPangkatLink;
+            document.querySelector('.cuti-link').href = cutiLink;
+            document.querySelector('.pensiun-link').href = pensiunLink;
+            document.querySelector('.mutasi-link').href = mutasiLink;
+            document.querySelector('.tamsil-link').href = tamsilLink;
+            document.querySelector('.penghargaan-link').href = penghargaanLink;
+        });
+    </script>
+</body>
+</html>
