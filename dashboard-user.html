@@ -405,32 +405,7 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        var now = new Date();
-        var hour = now.getHours();
-        var greeting;
-        var username = "Pengguna"; // Ganti dengan logika untuk mendapatkan username
 
-        // Contoh logika untuk mendapatkan username dari local storage
-        if (localStorage.getItem('username')) {
-            username = localStorage.getItem('username');
-        }
-
-        if (hour >= 5 && hour < 10) {
-            greeting = "Selamat Pagi, " + username + "!";
-        } else if (hour >= 10 && hour < 15) {
-            greeting = "Selamat Siang, " + username + "!";
-        } else if (hour >= 15 && hour < 18) {
-            greeting = "Selamat Sore, " + username + "!";
-        } else {
-            greeting = "Selamat Malam, " + username + "!";
-        }
-
-        $('#welcomeMessage').text(greeting);
-        $('.welcome-modal').modal('show');
-    });
-</script>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Mulai</button>
@@ -537,6 +512,35 @@
                 });
             }
         });
+        
+        $(document).ready(function() {
+    var now = new Date();
+    var hour = now.getHours();
+    var greeting;
+    var username = "Pengguna"; // Nilai default
+
+    // Contoh pengambilan username dari local storage
+    if (localStorage.getItem('username')) {
+        username = localStorage.getItem('username');
+    }
+
+    console.log("Jam saat ini:", hour);
+    console.log("Username:", username);
+
+    if (hour >= 5 && hour < 10) {
+        greeting = "Selamat Pagi, " + username + "!";
+    } else if (hour >= 10 && hour < 15) {
+        greeting = "Selamat Siang, " + username + "!";
+    } else if (hour >= 15 && hour < 18) {
+        greeting = "Selamat Sore, " + username + "!";
+    } else {
+        greeting = "Selamat Malam, " + username + "!";
+    }
+
+    $('#welcomeMessage').text(greeting);
+    $('.welcome-modal').modal('show');
+});
+
     </script>
 </body>
 </html>
