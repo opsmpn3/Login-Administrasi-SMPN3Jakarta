@@ -331,9 +331,19 @@
         font-size: 16px;
     }
 }
-.modal-backdrop.show {
-    opacity: 0.9; /* Sesuaikan tingkat kegelapan sesuai keinginan */
+.modal-content {
+    animation: fadeIn 0.5s ease-in-out;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
     </style>
 </head>
@@ -434,11 +444,33 @@
             </div>
             <div class="modal-body">
                 <p id="welcomeMessage"></p>
-                <p><strong>My Drive:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
+                <p><strong>Sistem Pengelolaan Data Administrasi Pegawai:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var now = new Date();
+        var hour = now.getHours();
+        var greeting;
+
+        if (hour >= 5 && hour < 10) {
+            greeting = "Selamat Pagi!";
+        } else if (hour >= 10 && hour < 15) {
+            greeting = "Selamat Siang!";
+        } else if (hour >= 15 && hour < 18) {
+            greeting = "Selamat Sore!";
+        } else {
+            greeting = "Selamat Malam!";
+        }
+
+        $('#welcomeMessage').text(greeting);
+        $('#welcomeModal').modal('show');
+    });
+</script>
+
 
 
   <!-- Footer -->
