@@ -298,7 +298,7 @@ body::before {
     if (sessionStorage.getItem('user')) {
         const user = JSON.parse(sessionStorage.getItem('user'));
         if (user.role === 'admin') {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'dashboard-admin.html';
         } else {
             window.location.href = 'dashboard-user.html';
         }
