@@ -473,18 +473,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const user = JSON.parse(sessionStorage.getItem('user'));
 
-    // Jika user tidak login, redirect ke index.html
     if (!user) {
         window.location.href = 'index.html';
         return;
     }
 
-    // Ambil waktu saat ini
+    // Modal
+    const welcomeModalEl = document.getElementById('welcomeModal');
+    if (welcomeModalEl && !sessionStorage.getItem("welcomeModalShown")) {
+        const welcomeModal = new bootstrap.Modal(welcomeModalEl);
+        welcomeModal.show();
+        sessionStorage.setItem("welcomeModalShown", "true");
+    }
+
+    // Navigasi
+    document.getElementById('homeBtn').addEventListener('click', () => window.location.href = 'dashboard-user.html');
+    document.getElementById('profileBtn').addEventListener('click', () => window.location.href = 'profile.html');
+    document.getElementById('usulan').addEventListener('click', () => window.location.href = 'usulan.html');
+    document.getElementById('peminjaman').addEventListener('click', () => window.location.href = 'https://script.google.com/macros/s/AKfycbzAJeMRFRvYZ_s6Fx9N_eltHTXbpV8AmusW-c2eljfhNCCtoawq4e9j5I2rA1AKNsLNsg/exec');
+    document.getElementById('galeri').addEventListener('click', () => window.location.href = 'galeri.html');
+    document.getElementById('laporan').addEventListener('click', () => window.location.href = 'laporan.html');
+
+    // Drive Button
+    const userDrive = users.find(u => u.username === user.username);
+    if (userDrive && userDrive.link) {
+        const driveBtn = document.getElementById('driveBtn');
+        driveBtn.style.display = "block";
+        driveBtn.addEventListener('click', function () {
+            window.open(userDrive.link, "_blank");
+        });
+    }
+
+    // Ucapan selamat
     var now = new Date();
     var hour = now.getHours();
     var greeting;
 
-    // Logika ucapan selamat berdasarkan waktu
     if (hour >= 5 && hour < 10) {
         greeting = "Selamat Pagi, " + user.name + "!";
     } else if (hour >= 10 && hour < 15) {
@@ -495,35 +519,9 @@ document.addEventListener('DOMContentLoaded', function () {
         greeting = "Selamat Malam, " + user.name + "!";
     }
 
-    // Menampilkan ucapan selamat di dalam modal
     document.getElementById('welcomeMessage').textContent = greeting;
-
-    // Pastikan modal hanya muncul sekali per sesi
-    const welcomeModalEl = document.getElementById('welcomeModal');
-    if (welcomeModalEl && !sessionStorage.getItem("welcomeModalShown")) {
-        const welcomeModal = new bootstrap.Modal(welcomeModalEl);
-        welcomeModal.show();
-        sessionStorage.setItem("welcomeModalShown", "true");
-    }
-
-    // Event Listener untuk Navigasi
-    document.getElementById('homeBtn').addEventListener('click', () => window.location.href = 'dashboard-user.html');
-    document.getElementById('profileBtn').addEventListener('click', () => window.location.href = 'profile.html');
-    document.getElementById('usulan').addEventListener('click', () => window.location.href = 'usulan.html');
-    document.getElementById('peminjaman').addEventListener('click', () => window.location.href = 'https://script.google.com/macros/s/AKfycbzAJeMRFRvYZ_s6Fx9N_eltHTXbpV8AmusW-c2eljfhNCCtoawq4e9j5I2rA1AKNsLNsg/exec');
-    document.getElementById('galeri').addEventListener('click', () => window.location.href = 'galeri.html');
-    document.getElementById('laporan').addEventListener('click', () => window.location.href = 'laporan.html');
-
-    // Cek apakah user memiliki link Drive
-    const userDrive = users.find(u => u.username === user.username);
-    if (userDrive && userDrive.link) {
-        const driveBtn = document.getElementById('driveBtn');
-        driveBtn.style.display = "block";
-        driveBtn.addEventListener('click', function () {
-            window.open(userDrive.link, "_blank");
-        });
-    }
 });
+
 
     </script>
 </body>
