@@ -295,6 +295,22 @@
                 font-size: 16px;
             }
         }
+/* CSS yang sudah ada */
+/* ... */
+
+/* CSS untuk modal selamat datang */
+.welcome-modal .modal-content {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
     </style>
 </head>
@@ -375,22 +391,47 @@
         </div>
     </div>
 
-    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal fade welcome-modal" id="welcomeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang di My Drive!</h5>
+                <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang!</h5>
             </div>
             <div class="modal-body">
                 <p id="welcomeMessage"></p>
-                <p><strong>Jelajahi fitur My Drive:</strong></p>
-                <ul>
-                    <li><strong>Kelola Dokumen Pribadi:</strong> Simpan dan atur dokumen penting Anda dengan mudah.</li>
-                    <li><strong>Usulan:</strong> Ajukan dan pantau usulan Anda secara terstruktur.</li>
-                    <li><strong>Absensi:</strong> Catat dan lacak kehadiran Anda dengan praktis.</li>
-                    <li><strong>SKP:</strong> Kelola Sasaran Kinerja Pegawai Anda secara digital.</li>
-                </ul>
+                <p><strong>Sistem Pengelolaan Data Administrasi Pegawai:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var now = new Date();
+        var hour = now.getHours();
+        var greeting;
+        var username = "Pengguna"; // Ganti dengan logika untuk mendapatkan username
+
+        // Contoh logika untuk mendapatkan username dari local storage
+        if (localStorage.getItem('username')) {
+            username = localStorage.getItem('username');
+        }
+
+        if (hour >= 5 && hour < 10) {
+            greeting = "Selamat Pagi, " + username + "!";
+        } else if (hour >= 10 && hour < 15) {
+            greeting = "Selamat Siang, " + username + "!";
+        } else if (hour >= 15 && hour < 18) {
+            greeting = "Selamat Sore, " + username + "!";
+        } else {
+            greeting = "Selamat Malam, " + username + "!";
+        }
+
+        $('#welcomeMessage').text(greeting);
+        $('.welcome-modal').modal('show');
+    });
+</script>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Mulai</button>
             </div>
@@ -440,7 +481,8 @@
               { name: "Henrikus Wawan Kurniawan, S.Pd", username: "214384", link: "https://drive.google.com/drive/folders/13BlsgoEh4RheAgKTPFTH-MmPqXRDaItV?usp=sharing" },
               { name: "Nur Aini, S.Pd", username: "219596", link: "https://drive.google.com/drive/folders/12-ItxnPrKfWmrpNt-xAIvUweP-6MoXm9?usp=sharing" },
               { name: "Aries Andesko Syamsirman, S.Pd", username: "1005790", link: "https://drive.google.com/drive/folders/15YNmyOlzeoOTf_u0BzSHO5vdlw7ZVmto?usp=sharing" },
-              { name: "Sri Sariwarni", username: "163391", link: "https://drive.google.com/drive/folders/14t9U_1mu4RMerEqGuySV4TmTxts3Xazz?usp=sharing" },
+              { name: "Sri Sariwar
+                ni", username: "163391", link: "https://drive.google.com/drive/folders/14t9U_1mu4RMerEqGuySV4TmTxts3Xazz?usp=sharing" },
               { name: "Dian Setiawati, S.E", username: "1016569", link: "https://drive.google.com/drive/folders/18fJfzlJmg3VKlmN9HTd9J6X5Z-LzLHqd?usp=sharing" },
               { name: "Sulasto, S.Pd", username: "1016578", link: "https://drive.google.com/drive/folders/1-ZdbLWoStfVVdliYuwMTwGNgOoZzo2yB?usp=sharing" },
               { name: "Riyan Heriyanto, S.Kom", username: "1020259", link: "https://drive.google.com/drive/folders/1Xse3siCVkad4fYuFygKmvcCaLEVaZxi5?usp=sharing" },
