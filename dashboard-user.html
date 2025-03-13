@@ -295,22 +295,6 @@
                 font-size: 16px;
             }
         }
-/* CSS yang sudah ada */
-/* ... */
-
-/* CSS untuk modal selamat datang */
-.welcome-modal .modal-content {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
     </style>
 </head>
@@ -363,7 +347,13 @@
                         <li>Rekening Gaji</li>
                     </ul>
                 </div>
-        
+                
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+              </div>
+          </div>
+      </div>
 
         <div class="menu-container">
             <div class="menu-card" id="usulan">
@@ -385,40 +375,30 @@
         </div>
     </div>
 
-   <div class="modal fade welcome-modal" id="welcomeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang!</h5>
-            </div>
-            <div class="modal-body">
-                <p id="welcomeMessage"></p>
-                <p><strong>Sistem Pengelolaan Data Administrasi Pegawai:</strong></p>
-                <ul>
-                    <li>Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</li>
-                    <li>Akses informasi kepegawaian Anda dengan cepat dan aman.</li>
-                    <li>Ajukan usulan dan peminjaman barang secara online.</li>
-                    <li>Lihat galeri foto dan laporan kepegawaian.</li>
-                </ul>
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="welcomeModalLabel">Selamat Datang!</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="welcomeMessage"></p>
+                    <p><strong>My Drive:</strong> Kelola dokumen pribadi, usulan, absensi, dan SKP dengan mudah.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
 
     <div class="footer">
         <p class="mb-0">&copy;2025 SMP Negeri 3 Jakarta</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        
-
-document.addEventListener('DOMContentLoaded', function () {
-     const users = [
+        document.addEventListener('DOMContentLoaded', function () {
+            const users = [
                 { name: "Irwanto Sumantri, S.Pd", username: "134026", link: "https://drive.google.com/drive/folders/141_l3p_4Cltx0OkxqwJiVJmwqwCJpw0a?usp=drive_link" },
               { name: "Drs. Sulaeman", username: "156434", link: "https://drive.google.com/drive/folders/1AFcrB54jQdB3r2caKzGkZyPWN-w5IUK1?usp=sharing" },
               { name: "Drs. Herru Tri Handaka", username: "139160", link: "https://drive.google.com/drive/folders/1fiANOzPlkV78QVB0SaOdf-zdMyLl1Oaz?usp=sharing" },
@@ -453,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
               { name: "Henrikus Wawan Kurniawan, S.Pd", username: "214384", link: "https://drive.google.com/drive/folders/13BlsgoEh4RheAgKTPFTH-MmPqXRDaItV?usp=sharing" },
               { name: "Nur Aini, S.Pd", username: "219596", link: "https://drive.google.com/drive/folders/12-ItxnPrKfWmrpNt-xAIvUweP-6MoXm9?usp=sharing" },
               { name: "Aries Andesko Syamsirman, S.Pd", username: "1005790", link: "https://drive.google.com/drive/folders/15YNmyOlzeoOTf_u0BzSHO5vdlw7ZVmto?usp=sharing" },
-              { name: "Sri Sariwarni", username: "163391", link: "https://drive.google.com/drive/folders/14t9U_1mu4RMerEqGuySV4TmTxts3Xazz?usp=sharing" },
+              { name: "Sri Sariwarni", username: "14t9U_1mu4RMerEqGuySV4TmTxts3Xazz", link: "https://drive.google.com/drive/folders/14t9U_1mu4RMerEqGuySV4TmTxts3Xazz?usp=sharing" },
               { name: "Dian Setiawati, S.E", username: "1016569", link: "https://drive.google.com/drive/folders/18fJfzlJmg3VKlmN9HTd9J6X5Z-LzLHqd?usp=sharing" },
               { name: "Sulasto, S.Pd", username: "1016578", link: "https://drive.google.com/drive/folders/1-ZdbLWoStfVVdliYuwMTwGNgOoZzo2yB?usp=sharing" },
               { name: "Riyan Heriyanto, S.Kom", username: "1020259", link: "https://drive.google.com/drive/folders/1Xse3siCVkad4fYuFygKmvcCaLEVaZxi5?usp=sharing" },
@@ -465,64 +445,49 @@ document.addEventListener('DOMContentLoaded', function () {
               { name: "Fauziah Utami, S.Kom", username: "1030678", link: "https://drive.google.com/drive/folders/1vbM39jGkkiGQL65DZ9Onc1-HNkmvryjQ?usp=sharing" },
               { name: "Ahmad Fauzi", username: "1016573", link: "https://drive.google.com/drive/folders/18fJfzlJmg3VKlmN9HTd9J6X5Z-LzLHqd?usp=sharing" },
               { name: "Iyan Sopian", username: "1016575", link: "https://drive.google.com/drive/folders/1oD1xRzZoWEV_QoCtcGpcaoxcj3FOaLiM?usp=sharing" },
-              { name: "Catur Nurhasanah", username: "1w_IG4ocyOwJscc9p5LBAuNkUCiML4Pf7", link: "https://drive.google.com/drive/folders/1w_IG4ocyOwJscc9p5LBAuNkUCiML4Pf7?usp=sharing" },
-              { name: "Dwi Desi Rima Irani", username: "1TcW9vGOMQwihz-04q7JU6GHoSx3DVizp", link: "https://drive.google.com/drive/folders/1TcW9vGOMQwihz-04q7JU6GHoSx3DVizp?usp=sharing" },
+              { name: "Catur Nurhasanah", username: "164848", link: "https://drive.google.com/drive/folders/1w_IG4ocyOwJscc9p5LBAuNkUCiML4Pf7?usp=sharing" },
+              { name: "Dwi Desi Rima Irani", username: "139150", link: "https://drive.google.com/drive/folders/1TcW9vGOMQwihz-04q7JU6GHoSx3DVizp?usp=sharing" },
               { name: "Abdul Syukur", username: "170359", link: "https://drive.google.com/drive/folders/1KnVe058JJ_egbLU2zM2dqBdSet6yJ4Fq" },
               { name: "Diamona Febrianti", username: "198046", link: "https://drive.google.com/drive/folders/1RrnA_Ai8Gti-Cp2taC2NS-QfHEd4zzQt?usp=sharing" }
           ];
 
-    const user = JSON.parse(sessionStorage.getItem('user'));
+            const user = JSON.parse(sessionStorage.getItem('user'));
 
-    if (!user) {
-        window.location.href = 'index.html';
-        return;
-    }
+            // Jika user tidak login, redirect ke index.html
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
 
-    // Modal
-    const welcomeModalEl = document.getElementById('welcomeModal');
-    if (welcomeModalEl && !sessionStorage.getItem("welcomeModalShown")) {
-        const welcomeModal = new bootstrap.Modal(welcomeModalEl);
-        welcomeModal.show();
-        sessionStorage.setItem("welcomeModalShown", "true");
-    }
+            // Menampilkan nama pengguna di dalam modal
+            document.getElementById('welcomeMessage').textContent = `Selamat datang, ${user.name}!`;
 
-    // Navigasi
-    document.getElementById('homeBtn').addEventListener('click', () => window.location.href = 'dashboard-user.html');
-    document.getElementById('profileBtn').addEventListener('click', () => window.location.href = 'profile.html');
-    document.getElementById('usulan').addEventListener('click', () => window.location.href = 'usulan.html');
-    document.getElementById('peminjaman').addEventListener('click', () => window.location.href = 'https://script.google.com/macros/s/AKfycbzAJeMRFRvYZ_s6Fx9N_eltHTXbpV8AmusW-c2eljfhNCCtoawq4e9j5I2rA1AKNsLNsg/exec');
-    document.getElementById('galeri').addEventListener('click', () => window.location.href = 'galeri.html');
-    document.getElementById('laporan').addEventListener('click', () => window.location.href = 'laporan.html');
+            // Pastikan modal hanya muncul sekali per sesi
+            const welcomeModalEl = document.getElementById('welcomeModal');
+            if (welcomeModalEl && !sessionStorage.getItem("welcomeModalShown")) {
+                const welcomeModal = new bootstrap.Modal(welcomeModalEl);
+                welcomeModal.show();
+                sessionStorage.setItem("welcomeModalShown", "true");
+            }
 
-    // Drive Button
-    const userDrive = users.find(u => u.username === user.username);
-    if (userDrive && userDrive.link) {
-        const driveBtn = document.getElementById('driveBtn');
-        driveBtn.style.display = "block";
-        driveBtn.addEventListener('click', function () {
-            window.open(userDrive.link, "_blank");
+            // Event Listener untuk Navigasi
+            document.getElementById('homeBtn').addEventListener('click', () => window.location.href = 'dashboard-user.html');
+            document.getElementById('profileBtn').addEventListener('click', () => window.location.href = 'profile.html');
+            document.getElementById('usulan').addEventListener('click', () => window.location.href = 'usulan.html');
+            document.getElementById('peminjaman').addEventListener('click', () => window.location.href = 'https://script.google.com/macros/s/AKfycbzAJeMRFRvYZ_s6Fx9N_eltHTXbpV8AmusW-c2eljfhNCCtoawq4e9j5I2rA1AKNsLNsg/exec');
+            document.getElementById('galeri').addEventListener('click', () => window.location.href = 'galeri.html');
+            document.getElementById('laporan').addEventListener('click', () => window.location.href = 'laporan.html');
+
+            // Cek apakah user memiliki link Drive
+            const userDrive = users.find(u => u.username === user.username);
+            if (userDrive && userDrive.link) {
+                const driveBtn = document.getElementById('driveBtn');
+                driveBtn.style.display = "block";
+                driveBtn.addEventListener('click', function () {
+                    window.open(userDrive.link, "_blank");
+                });
+            }
         });
-    }
-
-    // Ucapan selamat
-    var now = new Date();
-    var hour = now.getHours();
-    var greeting;
-
-    if (hour >= 5 && hour < 10) {
-        greeting = "Selamat Pagi, " + user.name + "!";
-    } else if (hour >= 10 && hour < 15) {
-        greeting = "Selamat Siang, " + user.name + "!";
-    } else if (hour >= 15 && hour < 18) {
-        greeting = "Selamat Sore, " + user.name + "!";
-    } else {
-        greeting = "Selamat Malam, " + user.name + "!";
-    }
-
-    document.getElementById('welcomeMessage').textContent = greeting;
-});
-
-
     </script>
 </body>
 </html>
